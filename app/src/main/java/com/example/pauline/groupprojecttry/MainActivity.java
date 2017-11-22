@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     TextView value3 = null;
     TextView value4 = null;
 
+    TextView XXXXXXX;
+
     LinearLayout linearLayoutButtons = null;
 
     Integer int1 = 0;

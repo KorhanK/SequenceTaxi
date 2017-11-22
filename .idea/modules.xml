@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GroupProjectTry.iml" filepath="$PROJECT_DIR$/GroupProjectTry.iml" />
+      <module fileurl="file://C:\Users\User\AndroidStudioProjects\SequenceTaxi\GroupProjectTry.iml" filepath="C:\Users\User\AndroidStudioProjects\SequenceTaxi\GroupProjectTry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SequenceTaxi.iml" filepath="$PROJECT_DIR$/.idea/SequenceTaxi.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\User\AndroidStudioProjects\SequenceTaxi\app\app.iml" filepath="C:\Users\User\AndroidStudioProjects\SequenceTaxi\app\app.iml" />
     </modules>
   </component>
 </project>
