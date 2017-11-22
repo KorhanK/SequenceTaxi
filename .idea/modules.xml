@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://C:\Users\User\AndroidStudioProjects\SequenceTaxi\GroupProjectTry.iml" filepath="C:\Users\User\AndroidStudioProjects\SequenceTaxi\GroupProjectTry.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SequenceTaxi.iml" filepath="$PROJECT_DIR$/.idea/SequenceTaxi.iml" />
+      <module fileurl="file://C:\Users\ENG\AndroidStudioProjects\SequenceTaxi\.idea\SequenceTaxi.iml" filepath="C:\Users\ENG\AndroidStudioProjects\SequenceTaxi\.idea\SequenceTaxi.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\User\AndroidStudioProjects\SequenceTaxi\app\app.iml" filepath="C:\Users\User\AndroidStudioProjects\SequenceTaxi\app\app.iml" />
+      <module fileurl="file://C:\Users\ENG\AndroidStudioProjects\SequenceTaxi\app\app.iml" filepath="C:\Users\ENG\AndroidStudioProjects\SequenceTaxi\app\app.iml" />
     </modules>
   </component>
 </project>
