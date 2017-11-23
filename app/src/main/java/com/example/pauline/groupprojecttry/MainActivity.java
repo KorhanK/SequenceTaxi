@@ -1,5 +1,7 @@
 package com.example.pauline.groupprojecttry;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -21,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
     TextView value3 = null;
     TextView value4 = null;
 
-    TextView XXXXXXX;
+    LinearLayout linearLayoutButtons;
 
-    LinearLayout linearLayoutButtons = null;
+    Thread t2 = null;
 
     Integer int1 = 0;
     Integer int2 = 0;
@@ -31,9 +33,11 @@ public class MainActivity extends AppCompatActivity {
     Integer int4 = 0;
 
     String valueSave = "";
-    String valueButton = "";
+    StringBuilder valueButton = new StringBuilder();
 
     Integer[] arrayInt = {1, 2, 3, 4};
+
+    int countClickButtons = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,44 +59,44 @@ public class MainActivity extends AppCompatActivity {
 
         valueSave = int1.toString() + int2.toString() + int3.toString() + int4.toString();
 
-        final Thread t = new Thread() {
+        Thread t = new Thread() {
 
             @Override
             public void run() {
                 try {
-                        Thread.sleep(4000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // TextView update
-                                value1.setText("");
-                                value2.setText("");
-                                value3.setText("");
-                                value4.setText("");
-                                valueButton = "";
-                                linearLayoutButtons = (LinearLayout) findViewById(R.id.buttons);
-                                linearLayoutButtons.setVisibility(View.VISIBLE);
-                            }
-                        });
+                    Thread.sleep(4000);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // TextView update
+                            value1.setText("");
+                            value2.setText("");
+                            value3.setText("");
+                            value4.setText("");
+
+                            valueButton.delete(0, valueButton.length());
+                            linearLayoutButtons = (LinearLayout) findViewById(R.id.buttons);
+                            linearLayoutButtons.setVisibility(View.VISIBLE);
+                        }
+                    });
                 } catch (InterruptedException e) {
                 }
             }
         };
         t.start();
 
-        final Thread t2 = new Thread() {
+        t2 = new Thread() {
 
             @Override
             public void run() {
                 try {
-                        Thread.sleep(10000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // TextView update
-                                checkSequence();
-                            }
-                        });
+                    Thread.sleep(10000);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            checkSequence();
+                        }
+                    });
                 } catch (InterruptedException e) {
                 }
             }
@@ -102,40 +106,28 @@ public class MainActivity extends AppCompatActivity {
         final Button button1 = findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                valueButton = valueButton + "1";
-                Toast.makeText(getApplicationContext(), valueButton, Toast.LENGTH_SHORT).show();
+                onClickButton("1");
             }
         });
 
         final Button button2 = findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                valueButton = valueButton + "2";
-                Toast.makeText(getApplicationContext(), valueButton, Toast.LENGTH_SHORT).show();
+                onClickButton("2");
             }
         });
 
         final Button button3 = findViewById(R.id.button3);
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                valueButton = valueButton + "3";
-                Toast.makeText(getApplicationContext(), valueButton, Toast.LENGTH_SHORT).show();
+                onClickButton("3");
             }
         });
 
         final Button button4 = findViewById(R.id.button4);
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                valueButton = valueButton + "4";
-                Toast.makeText(getApplicationContext(), valueButton, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        final Button ok = findViewById(R.id.ok);
-        ok.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                checkSequence();
-                t2.interrupt();
+                onClickButton("4");
             }
         });
     }
@@ -149,11 +141,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkSequence() {
-        if (valueSave.equals(valueButton)) {
-            Toast.makeText(getApplicationContext(), "Right!", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getApplicationContext(), "Wrong!", Toast.LENGTH_SHORT).show();
+        if (countClickButtons == 4 || !t2.isAlive()) {
+            if (valueSave.equals(valueButton.toString())) {
+                AlertMessage("Right");
+            } else {
+                AlertMessage("Wrong");
+            }
+            linearLayoutButtons.setVisibility(View.INVISIBLE);
+            t2.interrupt();
+            countClickButtons = 0;
         }
-        linearLayoutButtons.setVisibility(View.INVISIBLE);
+    }
+
+    public void AlertMessage(String message) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Ok",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = alert.create();
+        alertDialog.show();
+    }
+
+    public void onClickButton(String valueB) {
+        countClickButtons++;
+        valueButton.append(valueB);
+        Toast.makeText(getApplicationContext(), valueButton.toString(), Toast.LENGTH_SHORT).show();
+        checkSequence();
     }
 }
