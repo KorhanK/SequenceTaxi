@@ -10,11 +10,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Calendar;
+// progress bar
+import android.os.Handler;
+import android.widget.ProgressBar;
+// progress bar
+
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    //    Progress Bar
+    private ProgressBar mProgressBar;
+    private TextView mLoadingText;
+    private int mProgressStatus = 0;
+    private Handler mHandler = new Handler();
+//    Progress Bar
+
 
     TextView value1 = null;
     TextView value2 = null;
@@ -39,6 +51,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Progress Bar
+        mProgressBar = (ProgressBar) findViewById(R.id.progressbar);
+        mLoadingText = (TextView) findViewById(R.id.LoadingCompleteTextView);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (mProgressStatus < 100){
+                    mProgressStatus++;
+                    android.os.SystemClock.sleep(100);
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mProgressBar.setProgress(mProgressStatus);
+                        }
+                    });
+                }
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mLoadingText.setVisibility(View.VISIBLE);
+                    }
+                });
+            }
+        }).start();
+
+        // Progress Bar
+
+
     }
 
     public void go(View view) {
@@ -60,20 +102,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                        Thread.sleep(4000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // TextView update
-                                value1.setText("");
-                                value2.setText("");
-                                value3.setText("");
-                                value4.setText("");
-                                valueButton = "";
-                                linearLayoutButtons = (LinearLayout) findViewById(R.id.buttons);
-                                linearLayoutButtons.setVisibility(View.VISIBLE);
-                            }
-                        });
+                    Thread.sleep(4000);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // TextView update
+                            value1.setText("");
+                            value2.setText("");
+                            value3.setText("");
+                            value4.setText("");
+                            valueButton = "";
+                            linearLayoutButtons = (LinearLayout) findViewById(R.id.buttons);
+                            linearLayoutButtons.setVisibility(View.VISIBLE);
+                        }
+                    });
                 } catch (InterruptedException e) {
                 }
             }
@@ -85,14 +127,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                        Thread.sleep(10000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // TextView update
-                                checkSequence();
-                            }
-                        });
+                    Thread.sleep(10000);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // TextView update
+                            checkSequence();
+                        }
+                    });
                 } catch (InterruptedException e) {
                 }
             }
