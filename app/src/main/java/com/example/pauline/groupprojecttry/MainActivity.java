@@ -115,9 +115,10 @@ public class MainActivity extends AppCompatActivity {
                 onClickButton(4);
             }
         });
+       go();
     }
 
-    public void go(View view) {
+    public void go() {
         lengthSequence = (Integer) spinner.getItemAtPosition(spinner.getSelectedItemPosition());
         goButton.setVisibility(View.INVISIBLE);
         randomValueInt(lengthSequence);
