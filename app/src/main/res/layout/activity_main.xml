@@ -72,12 +72,12 @@
 
     </LinearLayout>
 
-    <Button
+   <!-- <Button
         android:id="@+id/goButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Go"
-        android:onClick="go"/>
+        android:onClick="go"/>-->
 
     <LinearLayout
         android:id="@+id/buttons"
