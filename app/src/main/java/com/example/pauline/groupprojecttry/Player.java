@@ -6,21 +6,22 @@ package com.example.pauline.groupprojecttry;
 
 public class Player {
 
-    private int coins;
-    private int lives;
-    private int level;
-    private int correctSequence;
-    private int totalCoins;
-    private String prefferStyle;
-    private int sequence;
+    public int coins;
+    public int lives;
+    public int level;
+    public int correctSequence;
+    public int totalCoins;
+    public String prefferStyle;
+    public int sequence;
 
     public Player() {
-        int coins=0;
-        int lives=5;
-        int level=0;
-        int correctSequence=0;
-        int totalCoins=0;
+        coins=0;
+        lives=5;
+        level=1;
+        correctSequence=0;
+        totalCoins=0;
     }
+
 
     public int addSequence(boolean check) {
         check=false;
@@ -62,7 +63,7 @@ public class Player {
     public void setCoins(int coins) {
         this.coins = coins;
     }
-    public int getLive2s() {
+    public int getLives() {
         return lives;
     }
     public void setLives(int lives) {
@@ -71,7 +72,7 @@ public class Player {
     public int getLevel() {
         return level;
     }
-    public void setLevels(int level) {
+    public void setLevel(int level) {
         this.level = level;
     }
     public int getCorrectSequence() {

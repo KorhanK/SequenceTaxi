@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.pauline.groupprojecttry.GamePage"
-
     android:orientation="vertical"
-
-    android:background="@drawable/background_v2"
-    >
+    android:background="@drawable/background_v2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,86 +43,62 @@
 
     </LinearLayout>
 
-
-
     <LinearLayout
+        android:id="@+id/buttons"
         android:layout_marginTop="230dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/image1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="52dp"
-            android:background="@drawable/left_white"
-            />
+            android:layout_marginTop="52dp"/>
+
         <ImageView
             android:id="@+id/image2"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginTop="52dp"/>
 
-            android:layout_marginTop="52dp"
-            android:background="@drawable/left_white"
-
-            />
         <ImageView
             android:id="@+id/image3"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginTop="52dp"/>
 
-            android:layout_marginTop="52dp"
-            android:background="@drawable/left_white"
-
-            />
         <ImageView
             android:id="@+id/image4"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginTop="52dp"/>
 
-            android:layout_marginTop="52dp"
-            android:background="@drawable/left_white"
-
-            />
         <ImageView
             android:id="@+id/image5"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginTop="52dp"/>
 
-            android:layout_marginTop="52dp"
-            android:background="@drawable/left_white"
-            />
         <ImageView
             android:id="@+id/image6"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginTop="52dp"/>
 
-            android:layout_marginTop="52dp"
-            android:background="@drawable/left_white"
-            />
         <ImageView
             android:id="@+id/image7"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginTop="52dp"/>
 
-            android:layout_marginTop="52dp"
-            android:background="@drawable/left_white"
-            />
         <ImageView
             android:id="@+id/image8"
             android:layout_width="40dp"
             android:layout_height="40dp"
-
-            android:layout_marginTop="52dp"
-            android:background="@drawable/left_white"
-            />
+            android:layout_marginTop="52dp"/>
 
     </LinearLayout>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -136,13 +106,10 @@
         android:orientation="vertical"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:layout_marginTop="45dp"
-
-
-        >
+        android:layout_marginTop="45dp">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_column="1"
@@ -167,7 +134,7 @@
                 android:onClick="print" />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/button4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="70dp"
@@ -178,15 +145,12 @@
 
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/button3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/down_button"
             android:layout_marginLeft="80dp"
             android:onClick="print" />
-
-
-
 
     </LinearLayout>
 
@@ -213,14 +177,5 @@
 
 
     </LinearLayout>
-
-
-
-
-
-
-
-
-
 
 </LinearLayout>
