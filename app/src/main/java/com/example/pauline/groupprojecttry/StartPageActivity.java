@@ -12,14 +12,15 @@ public class StartPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_page);
+        gobtn=findViewById(R.id.goButton);
     }
     public void goMethod(View view){
 
-        gobtn=findViewById(R.id.goButton);
+
         gobtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(StartPageActivity.this,MainActivity.class);
+                Intent intent= new Intent(StartPageActivity.this,GamePage.class);
                 startActivity(intent);
             }
         });
