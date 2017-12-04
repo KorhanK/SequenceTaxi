@@ -82,6 +82,10 @@ public class Player {
         }
     }
 
+    public void resetLevel() {
+        level = 1;
+    }
+
     public int getCorrectSequence() {
         return correctSequence;
     }
