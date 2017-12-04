@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,10 +17,22 @@ import java.util.List;
 
 public class PlaySettings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    Controller controller;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_settings);
+
+        controller = new Controller(this);
+
+        //update remaining lives of the player from json
+        TextView lives = findViewById(R.id.lives);
+        lives.setText(String.valueOf(controller.getPlayerLives()));
+
+        //update remaining coins of the player from json
+        TextView coins = findViewById(R.id.coins);
+        coins.setText(String.valueOf(controller.getPlayerCoins()));
 
         /* initiate a Switch */
         Switch simpleSwitch = (Switch) findViewById(R.id.sound);
@@ -53,7 +66,7 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(PlaySettings.this, GamePage.class); // Change the mainActivity to the game page
+                Intent intent =  new Intent(PlaySettings.this, StartPageActivity.class); // Change the mainActivity to the game page
                 intent.putExtra("data", String.valueOf(spinner.getSelectedItem()));
                 startActivity(intent);
             }
