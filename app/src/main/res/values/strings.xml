@@ -4,4 +4,5 @@
         -after the sequence disappear try to remember it  and use the button to rewrite it again.
     -if you rewrite the right sequence you will win coins and you will go to the next level.
     -if you fail to rewrite the right sequence you will lose 1 life.</string>
+    <string name="spinner_title"></string>
 </resources>
