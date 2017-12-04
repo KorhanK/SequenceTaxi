@@ -53,7 +53,7 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(PlaySettings.this, MainActivity.class); // Change the mainActivity to the game page
+                Intent intent =  new Intent(PlaySettings.this, GamePage.class); // Change the mainActivity to the game page
                 intent.putExtra("data", String.valueOf(spinner.getSelectedItem()));
                 startActivity(intent);
             }
