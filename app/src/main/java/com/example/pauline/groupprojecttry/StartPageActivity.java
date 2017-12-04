@@ -29,4 +29,9 @@ public class StartPageActivity extends AppCompatActivity {
 
     }
 
+    public void settings(View view) {
+        Intent intent = new Intent(this, PlaySettings.class);
+        startActivity(intent);
+    }
+
 }
