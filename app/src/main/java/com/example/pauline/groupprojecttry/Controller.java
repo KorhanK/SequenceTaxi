@@ -70,7 +70,17 @@ public class Controller {
 
     }
 
+    public boolean lifeDown() {
+        player.setLives(player.getLives()-1);
+        if(player.getLives()>0)
+            return true;
+        else
+            return false;
 
+
+
+
+    }
 
     public Controller(int level) {
         sequence = new Sequence(level);
@@ -86,5 +96,8 @@ public class Controller {
     }
 
 
-
+    public void resetPlayer() {
+        player.setLevel(1);
+        player.setLives(5);
+    }
 }
