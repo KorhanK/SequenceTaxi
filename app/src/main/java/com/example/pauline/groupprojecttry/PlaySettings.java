@@ -21,7 +21,7 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_settings);
 
-        /* initiate a Switch */
+        // initiate a Switch
         Switch simpleSwitch = (Switch) findViewById(R.id.sound);
 
         /* set the current state of a Switch */
