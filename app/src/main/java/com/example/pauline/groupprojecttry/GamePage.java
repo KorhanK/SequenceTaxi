@@ -1,6 +1,7 @@
 package com.example.pauline.groupprojecttry;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -45,6 +46,8 @@ public class GamePage extends AppCompatActivity {
     int level;
     boolean finishedHandler;
 
+    boolean gameEnded=false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +81,11 @@ public class GamePage extends AppCompatActivity {
             if (sequence.get(i) == 1)
                 images.get(i).setBackgroundResource(R.drawable.left_white);
             else if (sequence.get(i) == 2)
-                images.get(i).setBackgroundResource(R.drawable.up_button);
+                images.get(i).setBackgroundResource(R.drawable.up_white);
             else if (sequence.get(i) == 3)
-                images.get(i).setBackgroundResource(R.drawable.down_button);
+                images.get(i).setBackgroundResource(R.drawable.down_white);
             else if (sequence.get(i) == 4)
-                images.get(i).setBackgroundResource(R.drawable.right_button);
+                images.get(i).setBackgroundResource(R.drawable.right_white);
         }
     }
 
@@ -98,7 +101,13 @@ public class GamePage extends AppCompatActivity {
         alert.setPositiveButton("Ok",new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog,int id) {
                 dialog.cancel();
-                startSequence();
+                if(gameEnded) {
+                    Intent intent = new Intent(GamePage.this,StartPageActivity.class);
+                    startActivity(intent);
+                    gameEnded=false;
+                }
+                else
+                    startSequence();
             }
         });
         AlertDialog alertDialog = alert.create();
@@ -120,6 +129,10 @@ public class GamePage extends AppCompatActivity {
                 upLevel();
             } else {
                 alertMessage("Wrong");
+                if(!controller.lifeDown()){
+                    gameEnded = true;
+                    controller.resetPlayer();
+                }
             }
             linearLayoutButtons.setVisibility(View.INVISIBLE);
             handler2.removeCallbacks(r2);
