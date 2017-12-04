@@ -16,16 +16,7 @@ public class Tutorial extends AppCompatActivity {
         textView=(TextView)findViewById(R.id.tutorial);
     }
 
-
-
     public void goBack(View view){
-
         String but_text=((Button)view).getText().toString();
-
     }
-
-
-
-
-
 }

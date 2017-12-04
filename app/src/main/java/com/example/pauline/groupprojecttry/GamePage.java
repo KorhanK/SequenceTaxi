@@ -20,11 +20,8 @@ import java.util.List;
 
 public class GamePage extends AppCompatActivity {
 
-    Controller controller;
-
-
-    //JSON json = new JSON();
-   // Player player;
+    JSON json = new JSON();
+    Player player;
 
     ImageView image1;
     ImageView image2;
@@ -43,9 +40,9 @@ public class GamePage extends AppCompatActivity {
     Runnable r2;
     LinearLayout linearLayoutButtons;
 
-    //Sequence sequence;
+    Sequence sequence;
     int countClickButtons = 0;
-    //int level;
+    int level;
     boolean finishedHandler;
 
 
@@ -54,7 +51,10 @@ public class GamePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_page);
 
-        controller = new Controller(this);
+        player = json.loadPlayer(this);
+        if (player == null) {
+            player = new Player();
+        }
 
         linearLayoutButtons = (LinearLayout) findViewById(R.id.buttons);
         images = new ArrayList<>();
@@ -70,7 +70,6 @@ public class GamePage extends AppCompatActivity {
 
         startSequence();
     }
-
 
     public void imageSetter(ArrayList<Integer> sequence){
         int total = sequence.size();
@@ -88,7 +87,7 @@ public class GamePage extends AppCompatActivity {
     }
 
     public void imageCleaner(){
-        for (int i = 0; i < controller.getSequenceOfNumber().size(); i++)
+        for (int i = 0; i < sequence.sequenceOfNumbers.size(); i++)
             images.get(i).setBackground(null);
     }
 
@@ -109,42 +108,43 @@ public class GamePage extends AppCompatActivity {
     public void onClickButton(int valueClick) {
         countClickButtons++;
         //Toast.makeText(getApplicationContext(), String.valueOf(countClickButtons), Toast.LENGTH_SHORT).show();
-        controller.sequenceSetUserInputs(valueClick);
+        sequence.setUserInputs(valueClick);
         checkSequence();
     }
 
     public void checkSequence() {
-        if (countClickButtons == controller.getPlayerLevel() + 2 || finishedHandler) {
+        if (countClickButtons == level + 2 || finishedHandler) {
 
-            if (controller.checkSequence()) {
+            if (sequence.check()) {
                 alertMessage("Right");
-                controller.upLevel();
+                upLevel();
             } else {
                 alertMessage("Wrong");
             }
             linearLayoutButtons.setVisibility(View.INVISIBLE);
             handler2.removeCallbacks(r2);
             countClickButtons = 0;
-            controller.clearSequence(this);
+            sequence.clearSequence();
         }
     }
 
-//    public void upLevel() {
-//        player.setLevel(level + 1);
-//        json.savePlayer(this, player);
-//        //Toast.makeText(getApplicationContext(), String.valueOf(player.getLevel()), Toast.LENGTH_SHORT).show();
-//    }
+    public void upLevel() {
+        player.setLevel(level + 1);
+        json.savePlayer(this, player);
+        //Toast.makeText(getApplicationContext(), String.valueOf(player.getLevel()), Toast.LENGTH_SHORT).show();
+    }
 
 
     public void startSequence() {
         linearLayoutButtons.setVisibility(View.VISIBLE);
         TextView lives = findViewById(R.id.lives);
-        lives.setText(String.valueOf(controller.getPlayerLives()));
+        lives.setText(String.valueOf(player.getLives()));
 
         TextView coins = findViewById(R.id.coins);
-        coins.setText(String.valueOf(controller.getPlayerCoins()));
-        controller.createSequence();
+        coins.setText(String.valueOf(player.getCoins()));
 
+        level = player.getLevel();
+        sequence = new Sequence(level);
 
         images.add(image1);
         images.add(image2);
@@ -155,7 +155,7 @@ public class GamePage extends AppCompatActivity {
         images.add(image7);
         images.add(image8);
 
-        imageSetter(controller.getSequenceOfNumber());
+        imageSetter(sequence.getSequenceOfNumbers());
 
         handler1 = new Handler();
         r1 = new Runnable() {
