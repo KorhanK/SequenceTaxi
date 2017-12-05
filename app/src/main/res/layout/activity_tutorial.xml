@@ -46,7 +46,7 @@
         android:layout_height="37sp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="100dp"
         android:text="@string/gameObjectiveDescription"
         android:textSize="14sp"
