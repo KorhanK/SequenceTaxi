@@ -199,15 +199,17 @@
         app:layout_constraintVertical_bias="1.0">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Replay Sequence" />
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:background="@drawable/replay_button"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="170dp"
-            android:text="Options" />
+            android:background="@drawable/back_button"/>
+
+
 
 
     </LinearLayout>
