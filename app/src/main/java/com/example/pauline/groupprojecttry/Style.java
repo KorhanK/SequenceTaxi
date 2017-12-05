@@ -20,6 +20,7 @@ public class Style {
         styles.put(1, "animals");
         styles.put(2, "numbers");
 
+
     }
 
     public int getImages() {
