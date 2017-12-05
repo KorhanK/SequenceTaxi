@@ -24,12 +24,12 @@
             tools:layout_marginLeft="50dp" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
             android:layout_alignStart="@+id/tutorial"
             android:layout_below="@+id/tutorial"
             android:onClick="goBack"
-            android:text="Back" />
+            android:background="@drawable/back_button" />
 
 
     </RelativeLayout>
