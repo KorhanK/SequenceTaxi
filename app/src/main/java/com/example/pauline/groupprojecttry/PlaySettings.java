@@ -50,10 +50,10 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
-        categories.add("directions");
-        categories.add("animals");
-        categories.add("numbers");
-        categories.add("emojis");
+        categories.add("Directions");
+        categories.add("Animals");
+        categories.add("Numbers");
+        categories.add("Emojis");
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);

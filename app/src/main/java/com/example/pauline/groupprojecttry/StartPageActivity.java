@@ -20,13 +20,9 @@ public class StartPageActivity extends AppCompatActivity {
     public void goMethod(View view){
 
 
-        gobtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
                 Intent intent= new Intent(StartPageActivity.this,GamePage.class);
                 startActivity(intent);
-            }
-        });
 
 
 
