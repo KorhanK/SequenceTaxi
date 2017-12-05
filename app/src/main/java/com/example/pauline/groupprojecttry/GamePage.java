@@ -6,18 +6,13 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.JsonReader;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GamePage extends AppCompatActivity {
 
@@ -25,7 +20,7 @@ public class GamePage extends AppCompatActivity {
 
 
     //JSON json = new JSON();
-   // Player player;
+    // Player player;
 
     ImageView image1;
     ImageView image2;
@@ -36,6 +31,13 @@ public class GamePage extends AppCompatActivity {
     ImageView image7;
     ImageView image8;
 
+    ImageView image;
+
+    Button button1;
+    Button button2;
+    Button button3;
+    Button button4;
+
     ArrayList<ImageView> images;
 
     Handler handler1;
@@ -43,6 +45,8 @@ public class GamePage extends AppCompatActivity {
     Runnable r1;
     Runnable r2;
     LinearLayout linearLayoutButtons;
+
+    Style style;
 
     //Sequence sequence;
     int countClickButtons = 0;
@@ -58,6 +62,17 @@ public class GamePage extends AppCompatActivity {
         setContentView(R.layout.activity_game_page);
 
         controller = new Controller(this);
+        style = new Style();
+
+        button1 = (Button) findViewById(R.id.button1);
+        button2 = (Button) findViewById(R.id.button2);
+        button3 = (Button) findViewById(R.id.button3);
+        button4 = (Button) findViewById(R.id.button4);
+
+        button1.setBackgroundResource(style.getPlayButtons(1));
+        button2.setBackgroundResource(style.getPlayButtons(2));
+        button3.setBackgroundResource(style.getPlayButtons(3));
+        button4.setBackgroundResource(style.getPlayButtons(4));
 
         linearLayoutButtons = (LinearLayout) findViewById(R.id.buttons);
         images = new ArrayList<>();
@@ -71,6 +86,8 @@ public class GamePage extends AppCompatActivity {
         image7 = (ImageView) findViewById(R.id.image7);
         image8 = (ImageView) findViewById(R.id.image8);
 
+        image = (ImageView) findViewById(R.id.image);
+
         startSequence();
     }
 
@@ -80,13 +97,13 @@ public class GamePage extends AppCompatActivity {
         //total += 2;
         for (int i = 0; i < total; i++) {
             if (sequence.get(i) == 1)
-                images.get(i).setBackgroundResource(R.drawable.left_white);
+                images.get(i).setBackgroundResource(style.getPlayButtons(1));
             else if (sequence.get(i) == 2)
-                images.get(i).setBackgroundResource(R.drawable.up_white);
+                images.get(i).setBackgroundResource(style.getPlayButtons(2));
             else if (sequence.get(i) == 3)
-                images.get(i).setBackgroundResource(R.drawable.down_white);
+                images.get(i).setBackgroundResource(style.getPlayButtons(3));
             else if (sequence.get(i) == 4)
-                images.get(i).setBackgroundResource(R.drawable.right_white);
+                images.get(i).setBackgroundResource(style.getPlayButtons(4));
         }
     }
 
@@ -119,6 +136,7 @@ public class GamePage extends AppCompatActivity {
         countClickButtons++;
         //Toast.makeText(getApplicationContext(), String.valueOf(countClickButtons), Toast.LENGTH_SHORT).show();
         controller.sequenceSetUserInputs(valueClick);
+        image.setBackgroundResource(style.getImages());
         checkSequence();
     }
 

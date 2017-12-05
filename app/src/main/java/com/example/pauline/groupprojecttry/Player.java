@@ -49,40 +49,52 @@ public class Player {
         return coins;
     }
 
-    public int subtractLives() {
-        if(sequence==sequence) {
-            lives=lives-1;
+    public void subtractLives() {
+        if (lives > 0) {
+            lives--;
         }
-        return lives;
     }
-
 
     public int getCoins() {
         return coins;
     }
+
     public void setCoins(int coins) {
         this.coins = coins;
     }
+
     public int getLives() {
         return lives;
     }
+
     public void setLives(int lives) {
         this.lives = lives;
     }
+
     public int getLevel() {
         return level;
     }
-    public void setLevel(int level) {
-        this.level = level;
+
+    public void setLevel() {
+        if (level < 6) {
+            level++;
+        }
     }
+
+    public void resetLevel() {
+        level = 1;
+    }
+
     public int getCorrectSequence() {
         return correctSequence;
     }
-    public void setCorrectSequence(int correctSequence) {
-        this.correctSequence = correctSequence;
-    }
+
     public int getTotalCoins() {
         return totalCoins;
+    }
+
+    public void setCorrectSequence(int correctSequence) {
+        this.correctSequence = correctSequence;
     }
     public void setTotalCoins(int totalCoins) {
         this.totalCoins = totalCoins;
@@ -93,7 +105,5 @@ public class Player {
     public void setPrefferStyle(String prefferStyle) {
         this.prefferStyle = prefferStyle;
     }
-
-
 
 }

@@ -51,7 +51,7 @@ public class Controller {
     }
 
     public void upLevel() {
-        player.setLevel(player.getLevel()+1);
+        player.setLevel();
         player.setCoins(player.getCoins()+5+player.getLevel()-1);
 
     }
@@ -76,10 +76,6 @@ public class Controller {
             return true;
         else
             return false;
-
-
-
-
     }
 
     public Controller(int level) {
@@ -97,7 +93,7 @@ public class Controller {
 
 
     public void resetPlayer() {
-        player.setLevel(1);
+        player.resetLevel();
         player.setLives(5);
     }
 }
