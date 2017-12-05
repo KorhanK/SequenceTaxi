@@ -8,13 +8,18 @@ public class Style {
 
     ArrayList<Integer> images;
     HashMap<Integer, Integer> sequenceButtons;
+    HashMap<Integer, String> styles;
     Random randomInt = new Random();
 
     public Style() {
         sequenceButtons = new HashMap<>();
         images = new ArrayList<>();
+        styles = new HashMap<>();
 
-        directionStyle();
+        styles.put(0, "directions");
+        styles.put(1, "animals");
+        styles.put(2, "numbers");
+
     }
 
     public int getImages() {
@@ -27,6 +32,24 @@ public class Style {
             return sequenceButtons.get(value);
         }
         return 0;
+    }
+
+    public String getStyle(int pos){
+        String style = styles.get(pos);
+        return style;
+    }
+
+    public void loadStyle(int pos) {
+        if(getStyle(pos).equals("directions")){
+            directionStyle();
+        } else if(getStyle(pos).equals("animals")){
+            animalStyle();
+        } else if(getStyle(pos).equals("numbers")) {
+            numberColorStyle();
+        } else{
+            directionStyle();
+        }
+
     }
 
     public void directionStyle() {
@@ -45,7 +68,7 @@ public class Style {
         images.add(R.drawable.stockholm_winterbridge);
     }
 
-    public void farmStyle() {
+    public void animalStyle() {
         sequenceButtons.put(1, R.drawable.cow_button);
         sequenceButtons.put(2, R.drawable.horse_button);
         sequenceButtons.put(3, R.drawable.pig_button);
