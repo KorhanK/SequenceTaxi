@@ -56,7 +56,6 @@ public class Player {
         return lives;
     }
 
-
     public int getCoins() {
         return coins;
     }
@@ -93,7 +92,5 @@ public class Player {
     public void setPrefferStyle(String prefferStyle) {
         this.prefferStyle = prefferStyle;
     }
-
-
 
 }
