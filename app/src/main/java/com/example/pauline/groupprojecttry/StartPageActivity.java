@@ -1,5 +1,6 @@
 package com.example.pauline.groupprojecttry;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,15 +37,15 @@ public class StartPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void exitgame(View view){
+//    public void exitgame(View view){
+//        this.finish();
+//        System.exit(0);
+//    };
 
-        exitbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                System.exit(0);
-            }
-        });
+
+
+
+
 
     }
 
@@ -52,6 +53,4 @@ public class StartPageActivity extends AppCompatActivity {
 
 
 
-
-}
 
