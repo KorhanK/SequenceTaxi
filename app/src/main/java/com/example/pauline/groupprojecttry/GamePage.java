@@ -31,6 +31,13 @@ public class GamePage extends AppCompatActivity {
     ImageView image7;
     ImageView image8;
 
+    ImageView image;
+
+    Button button1;
+    Button button2;
+    Button button3;
+    Button button4;
+
     ArrayList<ImageView> images;
 
     Handler handler1;
@@ -57,6 +64,16 @@ public class GamePage extends AppCompatActivity {
         controller = new Controller(this);
         style = new Style();
 
+        button1 = (Button) findViewById(R.id.button1);
+        button2 = (Button) findViewById(R.id.button2);
+        button3 = (Button) findViewById(R.id.button3);
+        button4 = (Button) findViewById(R.id.button4);
+
+        button1.setBackgroundResource(style.getPlayButtons(1));
+        button2.setBackgroundResource(style.getPlayButtons(2));
+        button3.setBackgroundResource(style.getPlayButtons(3));
+        button4.setBackgroundResource(style.getPlayButtons(4));
+
         linearLayoutButtons = (LinearLayout) findViewById(R.id.buttons);
         images = new ArrayList<>();
 
@@ -68,6 +85,8 @@ public class GamePage extends AppCompatActivity {
         image6 = (ImageView) findViewById(R.id.image6);
         image7 = (ImageView) findViewById(R.id.image7);
         image8 = (ImageView) findViewById(R.id.image8);
+
+        image = (ImageView) findViewById(R.id.image);
 
         startSequence();
     }
@@ -117,6 +136,7 @@ public class GamePage extends AppCompatActivity {
         countClickButtons++;
         //Toast.makeText(getApplicationContext(), String.valueOf(countClickButtons), Toast.LENGTH_SHORT).show();
         controller.sequenceSetUserInputs(valueClick);
+        image.setBackgroundResource(style.getImages());
         checkSequence();
     }
 

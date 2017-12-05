@@ -9,7 +9,7 @@ import android.widget.ImageView;
 public class LogoActivity extends AppCompatActivity {
 
     ImageView image;
-    private static int TIME_OUT = 4000; //Time to launch the another activity
+    private static int TIME_OUT = 2000; //Time to launch the another activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
