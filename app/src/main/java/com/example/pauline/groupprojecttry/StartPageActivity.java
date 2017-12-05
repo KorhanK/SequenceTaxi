@@ -8,11 +8,13 @@ import android.widget.Button;
 
 public class StartPageActivity extends AppCompatActivity {
     public Button gobtn;
+    public Button exitbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_page);
         gobtn=findViewById(R.id.goButton);
+        exitbtn=findViewById(R.id.button2);
     }
     public void goMethod(View view){
 
@@ -34,4 +36,22 @@ public class StartPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void exitgame(View view){
+
+        exitbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                System.exit(0);
+            }
+        });
+
+    }
+
+
+
+
+
+
 }
+
