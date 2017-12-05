@@ -24,6 +24,7 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_settings);
 
+
         controller = new Controller(this);
 
         //update remaining lives of the player from json
