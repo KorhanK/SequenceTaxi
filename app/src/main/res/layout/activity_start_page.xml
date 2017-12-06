@@ -43,7 +43,8 @@
     <Button
         android:id="@+id/goButton"
         android:layout_width="120dp"
-        android:layout_height="60dp"
+
+        android:layout_height="40dp"
 
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -68,6 +69,7 @@
         <!--android:layout_marginStart="8dp"-->
         <!--android:layout_marginTop="8dp"-->
 
+
         <!--android:background="@drawable/exit_button"-->
 
         <!--android:onClick="exitgame"-->
@@ -82,7 +84,9 @@
     <Button
         android:id="@+id/button3"
         android:layout_width="120dp"
-        android:layout_height="60dp"
+
+        android:layout_height="40dp"
+
 
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -101,7 +105,9 @@
     <Button
         android:id="@+id/button4"
         android:layout_width="120dp"
-        android:layout_height="60dp"
+
+        android:layout_height="40dp"
+
 
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
