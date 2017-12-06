@@ -240,4 +240,13 @@ public class GamePage extends AppCompatActivity {
 
     }
 
+    public void backToMenu(View view){
+        Intent intent = new Intent(this, StartPageActivity.class);
+        startActivity(intent);
+    }
+
+
+
+
+
 }

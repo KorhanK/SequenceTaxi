@@ -37,7 +37,7 @@ import android.widget.TextView;
                         });
                         try {
                        // Sleep for 200 milliseconds.
-                            Thread.sleep(200);
+                            Thread.sleep(75);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
