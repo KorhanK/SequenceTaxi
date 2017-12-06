@@ -4,26 +4,41 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+
 public class Controller {
 
     Sequence sequence;
     Player player;
+    Style style;
 
     Context main;
 
     JSON json;
 
+    /*
+ constructor to initialize the instances.
+ */
+
     public Controller(Context context){
 
 
         json = new JSON();
+
         player = json.loadPlayer(context);
         if (player == null) {
             player = new Player();
         }
+        style = new Style(player.getPreferedStyle());
+
         createSequence();
+    }
 
+    public void loadStylePlayer() {
+        style.loadStyle(player.getPreferedStyle());
+    }
 
+    public int getPositionStyle() {
+        return player.getPreferedStyle();
     }
 
 
@@ -50,6 +65,10 @@ public class Controller {
         sequence = new Sequence(player.getLevel());
     }
 
+    /*
+    to update the level.
+     */
+
     public void upLevel() {
         player.setLevel();
         player.setCoins(player.getCoins()+5+player.getLevel()-1);
@@ -61,6 +80,7 @@ public class Controller {
         json.savePlayer(context, player);
     }
 
+
     public void sequenceSetUserInputs(int valueClick) {
         sequence.setUserInputs(valueClick);
     }
@@ -69,6 +89,9 @@ public class Controller {
         return sequence.check();
 
     }
+    /*
+    To decrease life
+     */
 
     public boolean lifeDown() {
         player.setLives(player.getLives()-1);
@@ -78,15 +101,17 @@ public class Controller {
             return false;
     }
 
-    public Controller(int level) {
-        sequence = new Sequence(level);
-    }
+//    public Controller(int level) {
+//        sequence = new Sequence(level);
+//    }
 
-    public void quit() {
-        System.exit(0);
-    }
+//    public void quit() {
+//        System.exit(0);
+//    }
 
-
+    /*
+    To return the Array of sequence
+     */
     public ArrayList<Integer> getSequenceOfNumber() {
        return sequence.getSequenceOfNumbers();
     }
