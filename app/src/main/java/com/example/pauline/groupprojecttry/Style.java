@@ -10,8 +10,10 @@ public class Style {
     HashMap<Integer, Integer> sequenceButtons;
     HashMap<Integer, String> styles;
     Random randomInt = new Random();
+    Controller controller;
+    int pos;
 
-    public Style() {
+    public Style(int pos) {
         sequenceButtons = new HashMap<>();
         images = new ArrayList<>();
         styles = new HashMap<>();
@@ -20,7 +22,7 @@ public class Style {
         styles.put(1, "animals");
         styles.put(2, "numbers");
 
-
+        loadStyle(pos);
     }
 
     public int getImages() {
@@ -28,9 +30,9 @@ public class Style {
         return images.get(value);
     }
 
-    public int getPlayButtons(int value) {
-        if (value > 0 && value <5) {
-            return sequenceButtons.get(value);
+    public int getPlayButtons(int key) {
+        if (key > 0 && key <5) {
+            return sequenceButtons.get(key);
         }
         return 0;
     }

@@ -20,7 +20,7 @@ public class GamePage extends AppCompatActivity {
 
 
     //JSON json = new JSON();
-    // Player player;
+    Player player;
 
     ImageView image1;
     ImageView image2;
@@ -62,7 +62,9 @@ public class GamePage extends AppCompatActivity {
         setContentView(R.layout.activity_game_page);
 
         controller = new Controller(this);
-        style = new Style();
+        controller.loadStylePlayer();
+
+        style = new Style(controller.getPositionStyle());
 
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);

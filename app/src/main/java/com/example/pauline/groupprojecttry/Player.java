@@ -11,7 +11,7 @@ public class Player {
     public int level;
     public int correctSequence;
     public int totalCoins;
-    public String prefferStyle;
+    public int preferedStyle;
     public int sequence;
 
     public Player() {
@@ -20,6 +20,7 @@ public class Player {
         level=1;
         correctSequence=0;
         totalCoins=0;
+        preferedStyle = 0;
     }
 
 
@@ -99,11 +100,13 @@ public class Player {
     public void setTotalCoins(int totalCoins) {
         this.totalCoins = totalCoins;
     }
-    public String getPrefferStyle() {
-        return prefferStyle;
+    public int getPreferedStyle() {
+        return preferedStyle;
     }
-    public void setPrefferStyle(String prefferStyle) {
-        this.prefferStyle = prefferStyle;
+
+    public void setPreferedStyle(int pos) {
+
+        this.preferedStyle = pos;
     }
 
 }
