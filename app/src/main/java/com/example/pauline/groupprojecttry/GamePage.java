@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -134,6 +135,7 @@ public class GamePage extends AppCompatActivity {
 
     public void onClickButton(int valueClick) {
         countClickButtons++;
+        //images.get(countClickButtons - 1).setBackgroundResource(style.getPlayButtons(valueClick));
         //Toast.makeText(getApplicationContext(), String.valueOf(countClickButtons), Toast.LENGTH_SHORT).show();
         controller.sequenceSetUserInputs(valueClick);
         image.setBackgroundResource(style.getImages());
@@ -142,7 +144,6 @@ public class GamePage extends AppCompatActivity {
 
     public void checkSequence() {
         if (countClickButtons == controller.getPlayerLevel() + 2 || finishedHandler) {
-
             if (controller.checkSequence()) {
                 alertMessage("Right");
                 controller.upLevel();
@@ -154,6 +155,7 @@ public class GamePage extends AppCompatActivity {
                 }
             }
             linearLayoutButtons.setVisibility(View.INVISIBLE);
+
             handler2.removeCallbacks(r2);
             countClickButtons = 0;
             controller.clearSequence(this);
@@ -176,6 +178,7 @@ public class GamePage extends AppCompatActivity {
         coins.setText(String.valueOf(controller.getPlayerCoins()));
         controller.createSequence();
 
+        notEnabledButtons();
 
         images.add(image1);
         images.add(image2);
@@ -193,6 +196,7 @@ public class GamePage extends AppCompatActivity {
             @Override
             public void run() {
                 imageCleaner();
+                enabledButtons();
                 linearLayoutButtons.setVisibility(View.VISIBLE);
             }
         };
@@ -238,6 +242,20 @@ public class GamePage extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void notEnabledButtons() {
+        button1.setEnabled(false);
+        button2.setEnabled(false);
+        button3.setEnabled(false);
+        button4.setEnabled(false);
+    }
+
+    public void enabledButtons() {
+        button1.setEnabled(true);
+        button2.setEnabled(true);
+        button3.setEnabled(true);
+        button4.setEnabled(true);
     }
 
 }
