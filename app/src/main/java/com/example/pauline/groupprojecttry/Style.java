@@ -8,13 +8,21 @@ public class Style {
 
     ArrayList<Integer> images;
     HashMap<Integer, Integer> sequenceButtons;
+    HashMap<Integer, String> styles;
     Random randomInt = new Random();
+    Controller controller;
+    int pos;
 
-    public Style() {
+    public Style(int pos) {
         sequenceButtons = new HashMap<>();
         images = new ArrayList<>();
+        styles = new HashMap<>();
 
-        directionStyle();
+        styles.put(0, "directions");
+        styles.put(1, "animals");
+        styles.put(2, "numbers");
+
+        loadStyle(pos);
     }
 
     public int getImages() {
@@ -22,11 +30,29 @@ public class Style {
         return images.get(value);
     }
 
-    public int getPlayButtons(int value) {
-        if (value > 0 && value <5) {
-            return sequenceButtons.get(value);
+    public int getPlayButtons(int key) {
+        if (key > 0 && key <5) {
+            return sequenceButtons.get(key);
         }
         return 0;
+    }
+
+    public String getStyle(int pos){
+        String style = styles.get(pos);
+        return style;
+    }
+
+    public void loadStyle(int pos) {
+        if(getStyle(pos).equals("directions")){
+            directionStyle();
+        } else if(getStyle(pos).equals("animals")){
+            animalStyle();
+        } else if(getStyle(pos).equals("numbers")) {
+            numberColorStyle();
+        } else{
+            directionStyle();
+        }
+
     }
 
     public void directionStyle() {
@@ -45,7 +71,7 @@ public class Style {
         images.add(R.drawable.stockholm_winterbridge);
     }
 
-    public void farmStyle() {
+    public void animalStyle() {
         sequenceButtons.put(1, R.drawable.cow_button);
         sequenceButtons.put(2, R.drawable.horse_button);
         sequenceButtons.put(3, R.drawable.pig_button);

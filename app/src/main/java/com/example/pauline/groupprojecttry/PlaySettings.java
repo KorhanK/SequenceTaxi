@@ -18,6 +18,8 @@ import java.util.List;
 public class PlaySettings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Controller controller;
+    Player player;
+    JSON json = new JSON();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
 
 
         controller = new Controller(this);
+        player = json.loadPlayer(this);
 
         //update remaining lives of the player from json
         TextView lives = findViewById(R.id.lives);
@@ -43,6 +46,7 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
 
         // Spinner element
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setSelection(player.getPreferedStyle());
         Button button=(Button)findViewById(R.id.back);
 
         // Spinner click listener
@@ -50,10 +54,10 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
-        categories.add("Directions");
-        categories.add("Animals");
-        categories.add("Numbers");
-        categories.add("Emojis");
+
+        categories.add("directions");
+        categories.add("animals");
+        categories.add("numbers");
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
@@ -79,6 +83,11 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         // On selecting a spinner item
         String item = adapterView.getItemAtPosition(i).toString();
+
+        player.setPreferedStyle(i);
+
+        //save json
+        json.savePlayer(this, player);
 
         // Showing selected spinner item
         Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();

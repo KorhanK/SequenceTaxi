@@ -9,6 +9,7 @@ public class Controller {
 
     Sequence sequence;
     Player player;
+    Style style;
 
     Context main;
 
@@ -22,13 +23,22 @@ public class Controller {
 
 
         json = new JSON();
+
         player = json.loadPlayer(context);
         if (player == null) {
             player = new Player();
         }
+        style = new Style(player.getPreferedStyle());
+
         createSequence();
+    }
 
+    public void loadStylePlayer() {
+        style.loadStyle(player.getPreferedStyle());
+    }
 
+    public int getPositionStyle() {
+        return player.getPreferedStyle();
     }
 
 
