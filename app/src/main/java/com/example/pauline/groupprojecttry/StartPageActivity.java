@@ -1,5 +1,6 @@
 package com.example.pauline.groupprojecttry;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,13 +20,9 @@ public class StartPageActivity extends AppCompatActivity {
     public void goMethod(View view){
 
 
-        gobtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
                 Intent intent= new Intent(StartPageActivity.this,GamePage.class);
                 startActivity(intent);
-            }
-        });
 
 
 
@@ -36,15 +33,15 @@ public class StartPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void exitgame(View view){
+//    public void exitgame(View view){
+//        this.finish();
+//        System.exit(0);
+//    };
 
-        exitbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                System.exit(0);
-            }
-        });
+
+
+
+
 
     }
 
@@ -52,6 +49,4 @@ public class StartPageActivity extends AppCompatActivity {
 
 
 
-
-}
 
