@@ -13,6 +13,9 @@ import android.widget.TextView;
         private int progressStatus = 25;
         private TextView textView;
         private Handler handler = new Handler();
+        /*
+        constructor to initialize the instances.
+         */
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -50,6 +53,7 @@ import android.widget.TextView;
             }).start();
 
         }
+
 
         private void nextcall(){
             Intent intent=new Intent(GameNameActivity.this,StartPageActivity.class);
