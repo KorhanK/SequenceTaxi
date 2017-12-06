@@ -12,20 +12,11 @@ public class Tutorial extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutorial);
-        textView=(TextView)findViewById(R.id.tutorial);
+        //setContentView(R.layout.activity_tutorial);
+       //textView=(TextView)findViewById(R.id.tutorial);
     }
-
-
 
     public void goBack(View view){
-
         String but_text=((Button)view).getText().toString();
-
     }
-
-
-
-
-
 }

@@ -55,20 +55,6 @@
             android:id="@+id/image8"
             android:layout_width="60dp"
             android:layout_height="60dp" />
-        <ImageView
-            android:id="@+id/image9"
-            android:layout_width="60dp"
-            android:layout_height="60dp" />
-        <ImageView
-            android:id="@+id/image10"
-            android:layout_width="60dp"
-            android:layout_height="60dp" />
-
-        <!--<TextView-->
-            <!--android:id="@+id/sequence"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textSize="70dp"/>-->
 
     </LinearLayout>
 
@@ -126,8 +112,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Change Type"
-        android:onClick="changeSet"
-
-        />
+        android:onClick="gamePage"/>
 
 </LinearLayout>
