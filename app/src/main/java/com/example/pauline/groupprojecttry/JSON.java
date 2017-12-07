@@ -46,6 +46,8 @@ public class JSON {
                     player.correctSequence = reader.nextInt();
                 } else if (name.equals("preferedStyle")) {
                     player.preferedStyle = reader.nextInt();
+                } else if (name.equals("timeLevel")) {
+                    player.timeLevel = reader.nextInt();
                 } else {
                     reader.skipValue();
                 }
@@ -69,6 +71,7 @@ public class JSON {
             writer.name("coinsTotal").value(player.getTotalCoins());
             writer.name("successSequence").value(player.getCorrectSequence());
             writer.name("preferedStyle").value(player.getPreferedStyle());
+            writer.name("timeLevel").value(player.getTimeLevel());
             writer.endObject();
             writer.close();
             file.close();
