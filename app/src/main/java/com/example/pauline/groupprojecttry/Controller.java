@@ -114,4 +114,20 @@ public class Controller {
         player.resetLevel();
         player.setLives(5);
     }
+
+    public boolean canPay(int i) {
+        if(player.getCoins()>i)
+            return true;
+        else
+            return false;
+    }
+
+
+    public void pay(int i) {
+        player.setCoins(player.getCoins() - i);
+    }
+
+    public void resetUserInput(){
+        sequence.userInputReset();
+    }
 }
