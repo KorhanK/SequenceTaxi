@@ -56,7 +56,6 @@ public class GamePage extends AppCompatActivity {
     int countClickButtons = 0;
     //int level;
     boolean finishedHandler;
-    boolean finishedHandler2;
 
     boolean gameEnded=false;
 
@@ -149,8 +148,6 @@ public class GamePage extends AppCompatActivity {
 
     public void onClickButton(final int valueClick) {
         countClickButtons++;
-        finishedHandler2 = false;
-
         //Toast.makeText(getApplicationContext(), String.valueOf(countClickButtons), Toast.LENGTH_SHORT).show();
         controller.sequenceSetUserInputs(valueClick);
         image.setBackgroundResource(style.getImages());
@@ -162,9 +159,7 @@ public class GamePage extends AppCompatActivity {
             r3 = new Runnable() {
                 @Override
                 public void run() {
-                    //finishedHandler = true;
                     checkSequence();
-                    //return;
                 }
             };
             handler3.postDelayed(r3, 100);
@@ -216,10 +211,7 @@ public class GamePage extends AppCompatActivity {
         coins.setText(String.valueOf(controller.getPlayerCoins()));
         controller.createSequence();
 
-
-
         notEnabledButtons();
-
 
         images.add(image1);
         images.add(image2);

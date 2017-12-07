@@ -7,13 +7,10 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    Sequence sequence;
-    Player player;
-    Style style;
-
-    Context main;
-
-    JSON json;
+    private Sequence sequence;
+    private Player player;
+    private Style style;
+    private JSON json;
 
     /*
  constructor to initialize the instances.
@@ -67,9 +64,8 @@ public class Controller {
      */
 
     public void upLevel() {
-        player.setLevel();
         player.setCoins(player.getCoins()+5+player.getLevel()-1);
-
+        player.setTimeLevel();
     }
 
     public void clearSequence(Context context) {

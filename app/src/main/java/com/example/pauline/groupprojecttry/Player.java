@@ -9,6 +9,7 @@ public class Player {
     public int coins;
     public int lives;
     public int level;
+    public int timeLevel;
     public int correctSequence;
     public int totalCoins;
     public int preferedStyle;
@@ -18,6 +19,7 @@ public class Player {
         coins=0;
         lives=5;
         level=1;
+        timeLevel = 1;
         correctSequence=0;
         totalCoins=0;
         preferedStyle = 0;
@@ -77,7 +79,7 @@ public class Player {
     }
 
     public void setLevel() {
-        if (level < 6) {
+        if (level <= 6) {
             level++;
         }
     }
@@ -94,19 +96,66 @@ public class Player {
         return totalCoins;
     }
 
-    public void setCorrectSequence(int correctSequence) {
-        this.correctSequence = correctSequence;
-    }
-    public void setTotalCoins(int totalCoins) {
-        this.totalCoins = totalCoins;
-    }
     public int getPreferedStyle() {
         return preferedStyle;
     }
 
     public void setPreferedStyle(int pos) {
-
         this.preferedStyle = pos;
+    }
+
+    public int getTimeLevel() {
+        return timeLevel;
+    }
+
+    /**
+     *  Increasing the level depends on the number of times the user succeeds the level.
+     *  If the player is on level 2, the level increases after the player enters 3 right sequences.
+     */
+    public void setTimeLevel() {
+        if (level == 1) {
+            if (timeLevel >= 2) {
+                setLevel();
+                timeLevel = 1;
+            } else {
+                timeLevel++;
+            }
+        } else if (level == 2) {
+            if (timeLevel >= 3) {
+                setLevel();
+                timeLevel = 1;
+            } else {
+                timeLevel++;
+            }
+        } else if (level == 3) {
+            if (timeLevel >= 4) {
+                setLevel();
+                timeLevel = 1;
+            } else {
+                timeLevel++;
+            }
+        } else if (level == 4) {
+            if (timeLevel >= 5) {
+                setLevel();
+                timeLevel = 1;
+            } else {
+                timeLevel++;
+            }
+        } else if (level == 5) {
+            if (timeLevel >= 6) {
+                setLevel();
+                timeLevel = 1;
+            } else {
+                timeLevel++;
+            }
+        } else if (level == 6) {
+            if (timeLevel >= 7) {
+                setLevel();
+                timeLevel = 1;
+            } else {
+                timeLevel++;
+            }
+        }
     }
 
 }
