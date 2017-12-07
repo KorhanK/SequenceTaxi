@@ -9,9 +9,9 @@
     <string name="gameObjectiveDescription">The game objective is to complete as most right sequence as possible.</string>
     <string name="gameFlowTitle">How to play:</string>
     <string name="gameRulesTitle">Game rules:</string>
-    <string name="gameRulesDescription">Coins:\n 1. The player starts the game with 0 coins and wins coins every time  he presses the whole sequence image correctly.\n 2. The player win a surprise gift from our sponsors every 5000 coins\n\n
-        Lives:\n The player start the game with 5 lives and very time you fail to press the right sequence of images you lose 1 life. When you press the 5 times the whole sequence of images correctly you win a life.\n\n
-        Levels:\n The player increases the game levels when whole right sequences of images are pressed.
+    <string name="gameRulesDescription">Coins:\n1. The player starts the game with 0 coins and wins coins every time  he presses the whole sequence image correctly.\n2. The player win a surprise gift from our sponsors every 5000 coins\n\n
+        Lives:\nThe player start the game with 5 lives and very time you fail to press the right sequence of images you lose 1 life. When you press the 5 times the whole sequence of images correctly you win a life.\n\n
+        Levels:\nThe player increases the game levels when whole right sequences of images are pressed.
         Number images: The number of images increase every time the player increases the game level.
 
     </string>

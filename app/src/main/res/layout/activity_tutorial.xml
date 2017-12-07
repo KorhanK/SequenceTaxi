@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundstart"
     tools:context="com.example.pauline.groupprojecttry.Tutorial">
 
     <TextView
@@ -12,9 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/tutorialTitleText"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@android:color/background_light"
         android:textSize="32sp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,9 +29,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="60dp"
         android:text="@string/gameObjectiveTitle"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@android:color/background_light"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +46,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="100dp"
         android:text="@string/gameObjectiveDescription"
+        android:textColor="@android:color/background_light"
         android:textSize="14sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -57,9 +62,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/gameFlowTitle"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@android:color/background_light"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -73,6 +79,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/gameFlowDescription"
+        android:textColor="@android:color/background_light"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -87,9 +95,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/gameRulesTitle"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@android:color/background_light"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -103,6 +112,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="224dp"
         android:text="@string/gameRulesDescription"
+        android:textColor="@android:color/background_light"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -121,9 +132,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/back_button"
-
-
         android:onClick="goBack"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
