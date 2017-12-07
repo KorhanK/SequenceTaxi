@@ -168,7 +168,6 @@ public class GamePage extends AppCompatActivity {
 //        //Toast.makeText(getApplicationContext(), String.valueOf(player.getLevel()), Toast.LENGTH_SHORT).show();
 //    }
 
-
     public void startSequence() {
         linearLayoutButtons.setVisibility(View.VISIBLE);
         TextView lives = findViewById(R.id.lives);
@@ -177,7 +176,6 @@ public class GamePage extends AppCompatActivity {
         TextView coins = findViewById(R.id.coins);
         coins.setText(String.valueOf(controller.getPlayerCoins()));
         controller.createSequence();
-
 
         images.add(image1);
         images.add(image2);
@@ -210,7 +208,6 @@ public class GamePage extends AppCompatActivity {
             }
         };
         handler2.postDelayed(r2, 10000);
-
 
         final Button button1 = findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -246,9 +243,5 @@ public class GamePage extends AppCompatActivity {
         Intent intent = new Intent(this, StartPageActivity.class);
         startActivity(intent);
     }
-
-
-
-
 
 }

@@ -1,22 +1,36 @@
 package com.example.pauline.groupprojecttry;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+
 
 public class Tutorial extends AppCompatActivity {
 
-    TextView textView;
+    //Button goBackButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_tutorial);
-       //textView=(TextView)findViewById(R.id.tutorial);
-    }
+        setContentView(R.layout.activity_tutorial);
+        //goBackButton = (Button)findViewById(R.id.goBackStartPageButton);
+
+
+       // goBackButton.setOnClickListener(new View.OnClickListener() {
+           // @Override
+           // public void onClick(View view) {
+               // Intent intent =  new Intent(Tutorial.this, StartPageActivity.class); // Change the mainActivity to the game page
+               // startActivity(intent);
+            }
+       // });
+
+
+    //}
 
     public void goBack(View view){
-        String but_text=((Button)view).getText().toString();
+       Intent intent =  new Intent(Tutorial.this, StartPageActivity.class);
+       startActivity(intent);
     }
 }
