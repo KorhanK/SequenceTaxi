@@ -51,8 +51,6 @@ public class Controller {
     public int getPlayerCoins(){
         int coins = player.getCoins();
         return coins;
-
-
     }
 
     public int getPlayerLevel(){
@@ -61,7 +59,6 @@ public class Controller {
     }
 
     public void createSequence() {
-
         sequence = new Sequence(player.getLevel());
     }
 

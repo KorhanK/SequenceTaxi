@@ -16,7 +16,9 @@
      
         <activity android:name=".GamePage" />
         <activity android:name=".GameNameActivity" />
+        <activity android:name=".Tutorial"/>
         <activity android:name=".LogoActivity">
+
         
 
             <intent-filter>
