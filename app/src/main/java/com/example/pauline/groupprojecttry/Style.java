@@ -6,10 +6,10 @@ import java.util.Random;
 
 public class Style {
 
-    ArrayList<Integer> images;
-    HashMap<Integer, Integer> sequenceButtons;
-    HashMap<Integer, String> styles;
-    Random randomInt = new Random();
+    private ArrayList<Integer> images;
+    private HashMap<Integer, Integer> sequenceButtons;
+    private HashMap<Integer, String> styles;
+    private Random randomInt = new Random();
     Controller controller;
     int pos;
 
