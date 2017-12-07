@@ -47,7 +47,18 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
         // Spinner element
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setSelection(player.getPreferedStyle());
+
+        // Back Button
         Button button=(Button)findViewById(R.id.back);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =  new Intent(PlaySettings.this, StartPageActivity.class); // Change the mainActivity to the game page
+                intent.putExtra("data", String.valueOf(spinner.getSelectedItem()));
+                startActivity(intent);
+            }
+        });
 
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
@@ -67,15 +78,6 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =  new Intent(PlaySettings.this, StartPageActivity.class); // Change the mainActivity to the game page
-                intent.putExtra("data", String.valueOf(spinner.getSelectedItem()));
-                startActivity(intent);
-            }
-        });
 
     }
 
