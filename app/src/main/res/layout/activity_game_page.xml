@@ -219,6 +219,7 @@
             android:layout_width="90dp"
             android:layout_height="30dp"
             android:background="@drawable/replay_button"
+            android:onClick="replaySequence"
 
             />
 

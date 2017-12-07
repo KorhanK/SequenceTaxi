@@ -47,4 +47,8 @@ public class Sequence {
         sequenceOfNumbers.clear();
         userInputs.clear();
     }
+
+    public void userInputReset(){
+        userInputs.clear();
+    }
 }

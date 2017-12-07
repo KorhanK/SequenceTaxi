@@ -230,6 +230,15 @@ public class GamePage extends AppCompatActivity {
         images.add(image7);
         images.add(image8);
 
+
+
+        runThis();
+
+
+    }
+
+    public void runThis(){
+
         imageSetter(controller.getSequenceOfNumber());
 
         handler1 = new Handler();
@@ -285,8 +294,8 @@ public class GamePage extends AppCompatActivity {
                 mp.start();
             }
         });
-
     }
+
   
     public void notEnabledButtons() {
         button1.setEnabled(false);
@@ -306,5 +315,21 @@ public class GamePage extends AppCompatActivity {
         Intent intent = new Intent(this, StartPageActivity.class);
         startActivity(intent);
     }
+
+    public void replaySequence(View view){
+        if(controller.canPay(20)) {
+            controller.pay(20);
+            TextView coins = findViewById(R.id.coins);
+            coins.setText(String.valueOf(controller.getPlayerCoins()));
+            controller.resetUserInput();
+            countClickButtons = 0;
+            handler2.removeCallbacks(r2);
+            runThis();
+        }
+
+
+
+    }
+
 
 }
