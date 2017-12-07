@@ -44,8 +44,10 @@ public class GamePage extends AppCompatActivity {
 
     Handler handler1;
     Handler handler2;
+    Handler handler3;
     Runnable r1;
     Runnable r2;
+    Runnable r3;
     LinearLayout linearLayoutButtons;
 
     Style style;
@@ -54,6 +56,7 @@ public class GamePage extends AppCompatActivity {
     int countClickButtons = 0;
     //int level;
     boolean finishedHandler;
+    boolean finishedHandler2;
 
     boolean gameEnded=false;
 
@@ -103,10 +106,7 @@ public class GamePage extends AppCompatActivity {
         startSequence();
     }
 
-    /**
-     * to set images to sequence.
-     * @param sequence
-     */
+
     public void imageSetter(ArrayList<Integer> sequence){
         int total = sequence.size();
         //total += 2;
@@ -147,17 +147,38 @@ public class GamePage extends AppCompatActivity {
         alertDialog.show();
     }
 
-    /**
-     *
-     * @param valueClick
-     */
-    public void onClickButton(int valueClick) {
+    public void onClickButton(final int valueClick) {
         countClickButtons++;
-        //images.get(countClickButtons - 1).setBackgroundResource(style.getPlayButtons(valueClick));
+        finishedHandler2 = false;
+
         //Toast.makeText(getApplicationContext(), String.valueOf(countClickButtons), Toast.LENGTH_SHORT).show();
         controller.sequenceSetUserInputs(valueClick);
         image.setBackgroundResource(style.getImages());
-        checkSequence();
+
+
+        if (countClickButtons == controller.getPlayerLevel() + 2) {
+
+            handler3 = new Handler();
+            r3 = new Runnable() {
+                @Override
+                public void run() {
+                    //finishedHandler = true;
+                    checkSequence();
+                    //return;
+                }
+            };
+            handler3.postDelayed(r3, 100);
+            displayClickButtons(valueClick);
+
+        } else {
+            displayClickButtons(valueClick);
+            checkSequence();
+        }
+
+    }
+
+    public void displayClickButtons(int valueClick) {
+        images.get(countClickButtons - 1).setBackgroundResource(style.getPlayButtons(valueClick));
     }
 
     public void checkSequence() {
