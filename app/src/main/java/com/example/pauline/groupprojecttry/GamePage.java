@@ -93,7 +93,10 @@ public class GamePage extends AppCompatActivity {
         startSequence();
     }
 
-
+    /**
+     * to set images to sequence.
+     * @param sequence
+     */
     public void imageSetter(ArrayList<Integer> sequence){
         int total = sequence.size();
         //total += 2;
@@ -134,6 +137,10 @@ public class GamePage extends AppCompatActivity {
         alertDialog.show();
     }
 
+    /**
+     *
+     * @param valueClick
+     */
     public void onClickButton(int valueClick) {
         countClickButtons++;
         //Toast.makeText(getApplicationContext(), String.valueOf(countClickButtons), Toast.LENGTH_SHORT).show();
