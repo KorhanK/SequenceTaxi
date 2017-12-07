@@ -2,6 +2,7 @@ package com.example.pauline.groupprojecttry;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -57,6 +58,10 @@ public class GamePage extends AppCompatActivity {
     boolean gameEnded=false;
 
 
+    MediaPlayer mp = new MediaPlayer();
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +95,10 @@ public class GamePage extends AppCompatActivity {
         image8 = (ImageView) findViewById(R.id.image8);
 
         image = (ImageView) findViewById(R.id.image);
+
+
+        mp = MediaPlayer.create(this, R.raw.beep);
+
 
         startSequence();
     }
@@ -221,6 +230,7 @@ public class GamePage extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onClickButton(1);
+                mp.start();
             }
         });
 
@@ -228,6 +238,7 @@ public class GamePage extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onClickButton(2);
+                mp.start();
             }
         });
 
@@ -235,6 +246,7 @@ public class GamePage extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onClickButton(3);
+                mp.start();
             }
         });
 
@@ -242,6 +254,7 @@ public class GamePage extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onClickButton(4);
+                mp.start();
             }
         });
 
