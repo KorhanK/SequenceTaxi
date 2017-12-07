@@ -100,7 +100,7 @@ public class GamePage extends AppCompatActivity {
         image = (ImageView) findViewById(R.id.image);
 
 
-        mp = MediaPlayer.create(this, R.raw.beep);
+        mp = MediaPlayer.create(this, R.raw.beep2);
 
 
         startSequence();
