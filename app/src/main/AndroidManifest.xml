@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
         <activity android:name=".StartPageActivity">   </activity>
         <activity android:name=".PlaySettings"></activity>
      
@@ -19,7 +18,6 @@
         <activity android:name=".Tutorial"/>
         <activity android:name=".LogoActivity">
 
-        
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
