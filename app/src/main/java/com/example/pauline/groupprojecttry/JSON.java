@@ -15,6 +15,9 @@ import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * JSON class that loads and saves the player level, coins, lives, success sequence, prefered style and time level fields.
+ */
 public class JSON {
 
     private String FILENAME = "playerFile";

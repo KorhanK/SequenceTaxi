@@ -189,7 +189,6 @@
 
         </LinearLayout>
 
-
         <Button
             android:id="@+id/button3"
             android:layout_width="60dp"
@@ -230,7 +229,6 @@
             android:background="@drawable/back_button"
             android:onClick="backToMenu"/>
 
-
     </LinearLayout>
 
     <TextView
@@ -251,6 +249,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.645" />
-
 
 </android.support.constraint.ConstraintLayout>

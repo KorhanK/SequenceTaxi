@@ -18,6 +18,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ *PlaySettings is an android interface class that initializes the Controller, Player and JSON fields, and shows the menus for
+ *selecting the icon images of the game and gives an option to mute the sound of the buttons
+ *
+ */
 public class PlaySettings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Controller controller;
@@ -31,6 +36,7 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
     List<String> categories;
 
     Context mContext;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +68,17 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
         // Spinner element for categories
         spinner = (Spinner) findViewById(R.id.spinner);
 
+            @Override
+            public void onClick(View view) {
+                Intent intent =  new Intent(PlaySettings.this, StartPageActivity.class); // Change the mainActivity to the game page
+                intent.putExtra("data", String.valueOf(spinner.getSelectedItem()));
+                startActivity(intent);
+            }
+        });
+
         //second spinner for bought styles
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
+       // spinner2 = (Spinner) findViewById(R.id.spinner2);
+
 
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
@@ -214,10 +229,12 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
 
         // On selecting a spinner item
 
-
         //Cut and paste the following code to the class where you control the spinner
+
+
         // Bundle bundle=getIntent().getExtras();
         //String data=bundle.get("data").toString();
+
 
     }
 
@@ -226,9 +243,11 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+
     public void exit() {
         Intent intent =  new Intent(PlaySettings.this, StartPageActivity.class); // Change the mainActivity to the game page
         //intent.putExtra("data", String.valueOf(spinner.getSelectedItem()));
         startActivity(intent);
     }
 }
+
