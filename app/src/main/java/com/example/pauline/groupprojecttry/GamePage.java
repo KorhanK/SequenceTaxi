@@ -70,6 +70,8 @@ public class GamePage extends AppCompatActivity {
 
     MediaPlayer mp = new MediaPlayer();
 
+    TextView seconds;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +110,7 @@ public class GamePage extends AppCompatActivity {
 
         mp = MediaPlayer.create(this, R.raw.beep2);
 
+        seconds = (TextView) findViewById(R.id.textView7);
         startSequence();
     }
 
@@ -165,6 +168,7 @@ public class GamePage extends AppCompatActivity {
                 @Override
                 public void run() {
                     checkSequence();
+
                 }
             };
             handler3.postDelayed(r3, 100);
@@ -173,6 +177,7 @@ public class GamePage extends AppCompatActivity {
         } else {
             displayClickButtons(valueClick);
             checkSequence();
+
         }
 
     }
@@ -183,6 +188,7 @@ public class GamePage extends AppCompatActivity {
 
     public void checkSequence() {
         if (countClickButtons == controller.getPlayerLevel() + 2 || finishedHandler) {
+            seconds.setVisibility(View.INVISIBLE);
             if (controller.checkSequence()) {
                 alertMessage("Right");
                 controller.upLevel();
@@ -240,6 +246,7 @@ public class GamePage extends AppCompatActivity {
             @Override
             public void run() {
                 imageCleaner();
+                seconds.setVisibility(View.VISIBLE);
                 enabledButtons();
                 linearLayoutButtons.setVisibility(View.VISIBLE);
             }

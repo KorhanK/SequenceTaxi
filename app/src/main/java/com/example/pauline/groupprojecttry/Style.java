@@ -1,5 +1,7 @@
 package com.example.pauline.groupprojecttry;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -10,6 +12,7 @@ public class Style {
     private HashMap<Integer, Integer> sequenceButtons;
     private HashMap<Integer, String> styles;
     private Random randomInt = new Random();
+
 
     // Edmundo Note: The "Controller" field does not have an access modifier do we need it? This method is not used do we need to have it?
     Controller controller;
@@ -27,12 +30,14 @@ public class Style {
         images = new ArrayList<>();
         styles = new HashMap<>();
 
+
         //Edmundo Note: Is it common practice to have methods in the constructor?
         // But if we want to use the code form lines 31 to 33 we should create a method instead.
         styles.put(0, "directions");
         styles.put(1, "animals");
         styles.put(2, "numbers");
         loadStyle(pos);
+
     }
 
     public int getImages() {
@@ -50,6 +55,10 @@ public class Style {
     public String getStyle(int pos){
         String style = styles.get(pos);
         return style;
+    }
+
+    public HashMap<Integer, String> getAllStyle() {
+        return styles;
     }
 
     public void loadStyle(int pos) {

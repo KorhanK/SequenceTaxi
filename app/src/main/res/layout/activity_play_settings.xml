@@ -93,6 +93,23 @@
         android:prompt="@string/spinner_title"
         android:textSize="25dp" />
 
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dip"
+        android:backgroundTint="@android:color/background_light"
+        android:prompt="@string/spinner_title"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buy"
+        android:onClick="buyStyle"/>
+
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -107,7 +124,9 @@
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/back"
             android:layout_toRightOf="@+id/view"
-            android:background="@drawable/exit_button" />
+            android:background="@drawable/exit_button"
+            android:onClick="exit"
+            />
 
         <View
             android:id="@+id/view"

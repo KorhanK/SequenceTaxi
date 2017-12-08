@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 onClickButton(4);
             }
         });
-        go();
+       go();
     }
 
     public void go() {
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
         thread2 = new Thread() {
 
-            @Override
+           @Override
             public void run() {
                 try {
                     Thread.sleep(10000);
@@ -152,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
         };
         thread2.start();
     }
-
     public void imageSetter(ArrayList<Integer> sequence){
 
         for (int i = 0; i < sequence.size(); i++) {
@@ -169,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void imageCleaner(){
         for (int i = 0; i < sequence.sequenceOfNumbers.size(); i++)
-            images.get(i).setBackground(null);
+        images.get(i).setBackground(null);
     }
 
 
