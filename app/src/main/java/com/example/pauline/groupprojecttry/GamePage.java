@@ -65,6 +65,8 @@ TextView textView7;
 
     MediaPlayer mp = new MediaPlayer();
 
+    TextView seconds;
+
 
 
     @Override
@@ -105,6 +107,8 @@ TextView textView7;
 
 
         mp = MediaPlayer.create(this, R.raw.beep2);
+
+        seconds = (TextView) findViewById(R.id.textView7);
 
 
         startSequence();
@@ -165,6 +169,7 @@ TextView textView7;
                 @Override
                 public void run() {
                     checkSequence();
+
                 }
             };
             handler3.postDelayed(r3, 100);
@@ -173,6 +178,7 @@ TextView textView7;
         } else {
             displayClickButtons(valueClick);
             checkSequence();
+
         }
 
     }
@@ -183,6 +189,7 @@ TextView textView7;
 
     public void checkSequence() {
         if (countClickButtons == controller.getPlayerLevel() + 2 || finishedHandler) {
+            seconds.setVisibility(View.INVISIBLE);
             if (controller.checkSequence()) {
                 alertMessage("Right");
                 controller.upLevel();
@@ -243,6 +250,7 @@ TextView textView7;
             @Override
             public void run() {
                 imageCleaner();
+                seconds.setVisibility(View.VISIBLE);
                 enabledButtons();
                 linearLayoutButtons.setVisibility(View.VISIBLE);
             }
