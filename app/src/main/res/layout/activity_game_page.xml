@@ -220,13 +220,15 @@
         <Button
             android:layout_width="90dp"
             android:layout_height="30dp"
-            android:background="@drawable/replay_button" />
+            android:background="@drawable/replay_button"
+            android:onClick="replaySequence" />
 
         <Button
             android:layout_width="90dp"
             android:layout_height="30dp"
             android:layout_marginLeft="170dp"
-            android:background="@drawable/back_button" />
+            android:background="@drawable/back_button"
+            android:onClick="backToMenu"/>
 
 
     </LinearLayout>
