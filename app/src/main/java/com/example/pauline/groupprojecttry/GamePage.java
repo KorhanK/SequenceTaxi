@@ -3,6 +3,7 @@ package com.example.pauline.groupprojecttry;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,7 @@ public class GamePage extends AppCompatActivity {
 
     Controller controller;
 
-
+TextView textView7;
     //JSON json = new JSON();
     Player player;
 
@@ -42,6 +43,8 @@ public class GamePage extends AppCompatActivity {
 
     ArrayList<ImageView> images;
 
+    long time;
+
     Handler handler1;
     Handler handler2;
     Handler handler3;
@@ -62,12 +65,16 @@ public class GamePage extends AppCompatActivity {
 
     MediaPlayer mp = new MediaPlayer();
 
+    TextView seconds;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_page);
+
+        textView7= (TextView) findViewById(R.id.textView7);
 
         controller = new Controller(this);
         controller.loadStylePlayer();
@@ -99,7 +106,9 @@ public class GamePage extends AppCompatActivity {
         image = (ImageView) findViewById(R.id.image);
 
 
-        mp = MediaPlayer.create(this, R.raw.beep);
+        mp = MediaPlayer.create(this, R.raw.beep2);
+
+        seconds = (TextView) findViewById(R.id.textView7);
 
 
         startSequence();
@@ -160,6 +169,7 @@ public class GamePage extends AppCompatActivity {
                 @Override
                 public void run() {
                     checkSequence();
+
                 }
             };
             handler3.postDelayed(r3, 100);
@@ -168,6 +178,7 @@ public class GamePage extends AppCompatActivity {
         } else {
             displayClickButtons(valueClick);
             checkSequence();
+
         }
 
     }
@@ -178,6 +189,7 @@ public class GamePage extends AppCompatActivity {
 
     public void checkSequence() {
         if (countClickButtons == controller.getPlayerLevel() + 2 || finishedHandler) {
+            seconds.setVisibility(View.INVISIBLE);
             if (controller.checkSequence()) {
                 alertMessage("Right");
                 controller.upLevel();
@@ -222,6 +234,15 @@ public class GamePage extends AppCompatActivity {
         images.add(image7);
         images.add(image8);
 
+
+
+        runThis();
+
+
+    }
+
+    public void runThis(){
+
         imageSetter(controller.getSequenceOfNumber());
 
         handler1 = new Handler();
@@ -229,12 +250,25 @@ public class GamePage extends AppCompatActivity {
             @Override
             public void run() {
                 imageCleaner();
+                seconds.setVisibility(View.VISIBLE);
                 enabledButtons();
                 linearLayoutButtons.setVisibility(View.VISIBLE);
             }
         };
         handler1.postDelayed(r1, 4000);
 
+        new CountDownTimer(10000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                time=(millisUntilFinished / 1000);
+                if(time<6)
+                textView7.setText(""+time);
+            }
+            public void onFinish() {
+                textView7.setText("0");
+            }
+
+        }.start();
         finishedHandler = false;
         handler2 = new Handler();
         r2 = new Runnable() {
@@ -277,8 +311,8 @@ public class GamePage extends AppCompatActivity {
                 mp.start();
             }
         });
-
     }
+
   
     public void notEnabledButtons() {
         button1.setEnabled(false);
@@ -298,5 +332,23 @@ public class GamePage extends AppCompatActivity {
         Intent intent = new Intent(this, StartPageActivity.class);
         startActivity(intent);
     }
+
+    public void replaySequence(View view){
+        if(controller.canPay(20)) {
+            controller.pay(20);
+            TextView coins = findViewById(R.id.coins);
+            coins.setText(String.valueOf(controller.getPlayerCoins()));
+            controller.resetUserInput();
+            countClickButtons = 0;
+            handler2.removeCallbacks(r2);
+            runThis();
+        }
+        else
+            Toast.makeText(getApplicationContext(), "You don't have 20 coins!", Toast.LENGTH_SHORT).show();
+
+
+
+    }
+
 
 }
