@@ -335,6 +335,8 @@ TextView textView7;
             handler2.removeCallbacks(r2);
             runThis();
         }
+        else
+            Toast.makeText(getApplicationContext(), "You don't have 20 coins!", Toast.LENGTH_SHORT).show();
 
 
 
