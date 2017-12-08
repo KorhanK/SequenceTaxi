@@ -1,5 +1,7 @@
 package com.example.pauline.groupprojecttry;
 
+import java.util.ArrayList;
+
 /**
  * Created by tmp-sda-1108 on 11/30/17.
  */
@@ -14,6 +16,7 @@ public class Player {
     public int totalCoins;
     public int preferedStyle;
     public int sequence;
+    public ArrayList<Integer> boughtStyle;
 
     public Player() {
         coins=0;
@@ -23,8 +26,9 @@ public class Player {
         correctSequence=0;
         totalCoins=0;
         preferedStyle = 0;
+        boughtStyle = new ArrayList<>();
+        boughtStyle.add(0);
     }
-
 
     public int addSequence(boolean check) {
         check=false;
@@ -156,6 +160,24 @@ public class Player {
                 timeLevel++;
             }
         }
+    }
+
+    public void addBoughtStyle(int newStyle) {
+        boughtStyle.add(newStyle);
+    }
+
+    public boolean searchBoughtStyle(int style) {
+        boolean found = false;
+        for (int i = 0; i < boughtStyle.size(); i++) {
+            if (boughtStyle.get(i) == style) {
+                found = true;
+            }
+        }
+        return found;
+    }
+
+    public ArrayList<Integer> getBoughtStyle() {
+        return boughtStyle;
     }
 
 }
