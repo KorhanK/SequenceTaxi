@@ -3,6 +3,7 @@ package com.example.pauline.groupprojecttry;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,7 @@ public class GamePage extends AppCompatActivity {
 
     Controller controller;
 
-
+TextView textView7;
     //JSON json = new JSON();
     Player player;
 
@@ -41,6 +42,8 @@ public class GamePage extends AppCompatActivity {
     Button button4;
 
     ArrayList<ImageView> images;
+
+    long time;
 
     Handler handler1;
     Handler handler2;
@@ -68,6 +71,8 @@ public class GamePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_page);
+
+        textView7= (TextView) findViewById(R.id.textView7);
 
         controller = new Controller(this);
         controller.loadStylePlayer();
@@ -244,6 +249,18 @@ public class GamePage extends AppCompatActivity {
         };
         handler1.postDelayed(r1, 4000);
 
+        new CountDownTimer(10000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                time=(millisUntilFinished / 1000);
+                if(time<6)
+                textView7.setText(""+time);
+            }
+            public void onFinish() {
+                textView7.setText("0");
+            }
+
+        }.start();
         finishedHandler = false;
         handler2 = new Handler();
         r2 = new Runnable() {
