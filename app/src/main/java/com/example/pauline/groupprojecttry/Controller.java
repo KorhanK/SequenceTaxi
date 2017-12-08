@@ -121,7 +121,6 @@ public class Controller {
             return false;
     }
 
-
     public void pay(int i) {
         player.setCoins(player.getCoins() - i);
     }
