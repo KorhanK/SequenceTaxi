@@ -128,4 +128,7 @@ public class Controller {
     public void resetUserInput(){
         sequence.userInputReset();
     }
+
+
+    
 }
