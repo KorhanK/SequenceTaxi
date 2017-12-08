@@ -10,8 +10,8 @@ public class Style {
     private HashMap<Integer, Integer> sequenceButtons;
     private HashMap<Integer, String> styles;
     private Random randomInt = new Random();
-    Controller controller;
-    int pos;
+//    Controller controller;
+//    int pos;
 
     public Style(int pos) {
         sequenceButtons = new HashMap<>();

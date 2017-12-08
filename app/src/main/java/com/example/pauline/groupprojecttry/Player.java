@@ -26,37 +26,37 @@ public class Player {
     }
 
 
-    public int addSequence(boolean check) {
-        check=false;
-
-        if (check==true) {
-            sequence=+1;
-        }
-        else if(check==false) {
-            sequence=sequence;
-        }
-
-        return sequence;
-    }
-    public int incresLevel() {
-        if(sequence==+1) {
-            level=level+1;
-        }
-        return level;
-    }
-    public int addCoins() {
-
-        if (sequence==+1) {
-            coins=coins+5;
-        }
-        return coins;
-    }
-
-    public void subtractLives() {
-        if (lives > 0) {
-            lives--;
-        }
-    }
+//    public int addSequence(boolean check) {
+//        check=false;
+//
+//        if (check==true) {
+//            sequence=+1;
+//        }
+//        else if(check==false) {
+//            sequence=sequence;
+//        }
+//
+//        return sequence;
+//    }
+//    public int incresLevel() {
+//        if(sequence==+1) {
+//            level=level+1;
+//        }
+//        return level;
+//    }
+//    public int addCoins() {
+//
+//        if (sequence==+1) {
+//            coins=coins+5;
+//        }
+//        return coins;
+//    }
+//
+//    public void subtractLives() {
+//        if (lives > 0) {
+//            lives--;
+//        }
+//    }
 
     public int getCoins() {
         return coins;

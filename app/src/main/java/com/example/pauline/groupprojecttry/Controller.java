@@ -94,14 +94,6 @@ public class Controller {
             return false;
     }
 
-//    public Controller(int level) {
-//        sequence = new Sequence(level);
-//    }
-
-//    public void quit() {
-//        System.exit(0);
-//    }
-
     /*
     To return the Array of sequence
      */

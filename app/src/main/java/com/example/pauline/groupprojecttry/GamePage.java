@@ -22,8 +22,7 @@ public class GamePage extends AppCompatActivity {
     Controller controller;
 
 TextView textView7;
-    //JSON json = new JSON();
-    Player player;
+
 
     ImageView image1;
     ImageView image2;
@@ -208,12 +207,6 @@ TextView textView7;
         }
     }
 
-//    public void upLevel() {
-//        player.setLevel(level + 1);
-//        json.savePlayer(this, player);
-//        //Toast.makeText(getApplicationContext(), String.valueOf(player.getLevel()), Toast.LENGTH_SHORT).show();
-//    }
-
     public void startSequence() {
         linearLayoutButtons.setVisibility(View.VISIBLE);
         TextView lives = findViewById(R.id.lives);
@@ -234,11 +227,7 @@ TextView textView7;
         images.add(image7);
         images.add(image8);
 
-
-
         runThis();
-
-
     }
 
     public void runThis(){
