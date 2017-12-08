@@ -129,9 +129,7 @@
 
     <Button
         android:id="@+id/goBackStartPageButton"
-
         android:layout_width="75dp"
-
         android:layout_height="25dp"
 
         android:layout_alignStart="@+id/tutorial"

@@ -15,7 +15,6 @@ public class Player {
     public int preferedStyle;
     public int sequence;
 
-
     /**
      * Constructor method that initializes the Player class fields of coins, lives, level, timeLevel, correctSequence, preferedStyle and sequence.
      */
@@ -99,7 +98,6 @@ public class Player {
         level = 1;
     }
 
-
     //Edmundo Note: Where do we set the correct sequence?
     public int getCorrectSequence() {
         return correctSequence;
@@ -110,14 +108,26 @@ public class Player {
         return totalCoins;
     }
 
+    /**
+     * Method that gets the selected prefered icon image of buttons.
+     * @return int value with the selected prefered icon image of buttons.
+     */
     public int getPreferedStyle() {
         return preferedStyle;
     }
 
+    /**
+     * Method that sets the prefered style by selecting the icon image of the buttons we want to play with, e.g. arrows, numbers or animals
+     * @param pos int value that represents the prefered style of the icon image of the buttons we want to play with.
+     */
     public void setPreferedStyle(int pos) {
         this.preferedStyle = pos;
     }
 
+    /**
+     * Method that gets ... please continue
+     * @return int value that ... please continue
+     */
     public int getTimeLevel() {
         return timeLevel;
     }
@@ -171,5 +181,4 @@ public class Player {
             }
         }
     }
-
 }

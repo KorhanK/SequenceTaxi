@@ -15,11 +15,17 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *PlaySettings is an android interface class that initializes the Controller, Player and JSON fields, and shows the menus for
+ *selecting the icon images of the game and gives an option to mute the sound of the buttons
+ *
+ */
 public class PlaySettings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Controller controller;
     Player player;
     JSON json = new JSON();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +58,7 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
         Button button=(Button)findViewById(R.id.back);
 
         button.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Intent intent =  new Intent(PlaySettings.this, StartPageActivity.class); // Change the mainActivity to the game page
@@ -94,11 +101,9 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
         // Showing selected spinner item
         Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
-
         //Cut and paste the following code to the class where you control the spinner
         /* Bundle bundle=getIntent().getExtras();
         String data=bundle.get("data").toString(); */
-
     }
 
     @Override

@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 onClickButton(4);
             }
         });
-       go();
+        go();
     }
 
     public void go() {
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void imageCleaner(){
         for (int i = 0; i < sequence.sequenceOfNumbers.size(); i++)
-        images.get(i).setBackground(null);
+            images.get(i).setBackground(null);
     }
 
 
@@ -227,4 +227,3 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
-

@@ -4,6 +4,13 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+/**
+ * Controller class that initializes the class fields, and have the following setters and getters methods for:
+ * loadStylePlayer(), getPositionStyle(), getPlayerLives(), getPlayerCoins(), getPlayerLevel(), createSequence(),
+ * upLevel(), clearSequence(), sequenceSetUserInputs(), checkSequence(), lifeDown(), resetPlayer(), resetUserInput(),
+ * canPay(), and pay().
+ *
+ * */
 public class Controller {
 
     private Sequence sequence;
@@ -26,7 +33,7 @@ public class Controller {
 
         style = new Style(player.getPreferedStyle());
 
-        //Edmundo Note: Is it common to have methods in the constructor?
+        //Edmundo Note: Is it common practice to have methods in the constructor?
         createSequence();
     }
 
@@ -58,10 +65,6 @@ public class Controller {
         sequence = new Sequence(player.getLevel());
     }
 
-    /*
-    to update the level.
-     */
-
     public void upLevel() {
         player.setCoins(player.getCoins()+5+player.getLevel()-1);
         player.setTimeLevel();
@@ -72,7 +75,6 @@ public class Controller {
         json.savePlayer(context, player);
     }
 
-
     public void sequenceSetUserInputs(int valueClick) {
         sequence.setUserInputs(valueClick);
     }
@@ -81,9 +83,6 @@ public class Controller {
         return sequence.check();
 
     }
-    /*
-    To decrease life
-     */
 
     public boolean lifeDown() {
         player.setLives(player.getLives()-1);
@@ -93,26 +92,19 @@ public class Controller {
             return false;
     }
 
-//    public Controller(int level) {
-//        sequence = new Sequence(level);
-//    }
-
-//    public void quit() {
-//        System.exit(0);
-//    }
-
-    /*
-    To return the Array of sequence
-     */
     public ArrayList<Integer> getSequenceOfNumber() {
         return sequence.getSequenceOfNumbers();
     }
-
 
     public void resetPlayer() {
         player.resetLevel();
         player.setLives(5);
     }
+
+    public void resetUserInput(){
+        sequence.userInputReset();
+    }
+
 
     public boolean canPay(int i) {
         if(player.getCoins()>i)
@@ -124,11 +116,5 @@ public class Controller {
     public void pay(int i) {
         player.setCoins(player.getCoins() - i);
     }
-
-    public void resetUserInput(){
-        sequence.userInputReset();
-    }
-
-
 
 }

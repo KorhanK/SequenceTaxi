@@ -17,11 +17,17 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ *
+ *GamePage is an android interface class that initializes the class fields, and loads all the image icons and pictures according to the
+ *prefered style of the player. The class also has methods for checking if the player has entered the correct sequence.
+ *
+ */
 public class GamePage extends AppCompatActivity {
 
     Controller controller;
 
-TextView textView7;
+    TextView textView7;
     //JSON json = new JSON();
     Player player;
 
@@ -62,10 +68,7 @@ TextView textView7;
 
     boolean gameEnded=false;
 
-
     MediaPlayer mp = new MediaPlayer();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,13 +106,10 @@ TextView textView7;
 
         image = (ImageView) findViewById(R.id.image);
 
-
         mp = MediaPlayer.create(this, R.raw.beep2);
-
 
         startSequence();
     }
-
 
     public void imageSetter(ArrayList<Integer> sequence){
         int total = sequence.size();
@@ -227,10 +227,7 @@ TextView textView7;
         images.add(image7);
         images.add(image8);
 
-
-
         runThis();
-
 
     }
 
@@ -254,7 +251,7 @@ TextView textView7;
             public void onTick(long millisUntilFinished) {
                 time=(millisUntilFinished / 1000);
                 if(time<6)
-                textView7.setText(""+time);
+                    textView7.setText(""+time);
             }
             public void onFinish() {
                 textView7.setText("0");
@@ -305,7 +302,6 @@ TextView textView7;
         });
     }
 
-  
     public void notEnabledButtons() {
         button1.setEnabled(false);
         button2.setEnabled(false);
@@ -338,9 +334,6 @@ TextView textView7;
         else
             Toast.makeText(getApplicationContext(), "You don't have 20 coins!", Toast.LENGTH_SHORT).show();
 
-
-
     }
-
 
 }

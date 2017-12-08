@@ -10,18 +10,28 @@ public class Style {
     private HashMap<Integer, Integer> sequenceButtons;
     private HashMap<Integer, String> styles;
     private Random randomInt = new Random();
+
+    // Edmundo Note: The "Controller" field does not have an access modifier do we need it? This method is not used do we need to have it?
     Controller controller;
+    // Edmundo Note: The "pos" field does not have an access modifier do we need it? This method is not used do we need to have it?
     int pos;
 
+    /**
+     *
+     * Constructor method that initializes the sequenceButtons, images, styles field and
+     *
+     * @param pos
+     */
     public Style(int pos) {
         sequenceButtons = new HashMap<>();
         images = new ArrayList<>();
         styles = new HashMap<>();
 
+        //Edmundo Note: Is it common practice to have methods in the constructor?
+        // But if we want to use the code form lines 31 to 33 we should create a method instead.
         styles.put(0, "directions");
         styles.put(1, "animals");
         styles.put(2, "numbers");
-
         loadStyle(pos);
     }
 
@@ -60,7 +70,6 @@ public class Style {
         sequenceButtons.put(2, R.drawable.up_white);
         sequenceButtons.put(3, R.drawable.down_white);
         sequenceButtons.put(4, R.drawable.right_white);
-
 
         images.add(R.drawable.stockholm_colorful);
         images.add(R.drawable.stockholm_gamlastan);
