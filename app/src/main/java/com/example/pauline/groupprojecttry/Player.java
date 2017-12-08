@@ -1,6 +1,8 @@
 package com.example.pauline.groupprojecttry;
 
 
+import java.util.ArrayList;
+
 /**
  * Player class that initializes the class fields, and have the following setters and getters methods for: coins, lives, level, correct sequence, total coins, prefered style, and time level. .
  */
@@ -14,6 +16,7 @@ public class Player {
     public int totalCoins;
     public int preferedStyle;
     public int sequence;
+    public ArrayList<Integer> boughtStyle;
 
 
     /**
@@ -28,9 +31,9 @@ public class Player {
         correctSequence=0;
         totalCoins=0;
         preferedStyle = 0;
+        boughtStyle = new ArrayList<>();
+        boughtStyle.add(0);
     }
-
-    //Edmundo Note: do we need this method?
     public int addSequence(boolean check) {
 
         check=false;
@@ -172,4 +175,24 @@ public class Player {
         }
     }
 
+    public void addBoughtStyle(int newStyle) {
+        boughtStyle.add(newStyle);
+    }
+
+    public boolean searchBoughtStyle(int style) {
+        boolean found = false;
+        for (int i = 0; i < boughtStyle.size(); i++) {
+            if (boughtStyle.get(i) == style) {
+                found = true;
+            }
+        }
+        return found;
+    }
+
+    public ArrayList<Integer> getBoughtStyle() {
+        return boughtStyle;
+    }
+
 }
+}
+

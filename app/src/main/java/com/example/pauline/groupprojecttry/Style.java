@@ -1,5 +1,7 @@
 package com.example.pauline.groupprojecttry;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -10,19 +12,19 @@ public class Style {
     private HashMap<Integer, Integer> sequenceButtons;
     private HashMap<Integer, String> styles;
     private Random randomInt = new Random();
-    Controller controller;
-    int pos;
+    //Controller controller;
 
-    public Style(int pos) {
+    public Style(int positionStyle) {
         sequenceButtons = new HashMap<>();
         images = new ArrayList<>();
         styles = new HashMap<>();
+
 
         styles.put(0, "directions");
         styles.put(1, "animals");
         styles.put(2, "numbers");
 
-        loadStyle(pos);
+        loadStyle(positionStyle);
     }
 
     public int getImages() {
@@ -40,6 +42,10 @@ public class Style {
     public String getStyle(int pos){
         String style = styles.get(pos);
         return style;
+    }
+
+    public HashMap<Integer, String> getAllStyle() {
+        return styles;
     }
 
     public void loadStyle(int pos) {

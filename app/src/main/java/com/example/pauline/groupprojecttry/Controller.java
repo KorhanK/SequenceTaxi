@@ -3,6 +3,7 @@ package com.example.pauline.groupprojecttry;
 import android.content.Context;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Controller {
 
@@ -44,6 +45,22 @@ public class Controller {
         return lives;
     }
 
+
+    public HashMap<Integer, String> allStyle() {
+        return style.getAllStyle();
+    }
+
+    public boolean searchBoughtStyle(int style) {
+        return player.searchBoughtStyle(style);
+    }
+
+    public ArrayList<Integer> getBoughtStyle() {
+        return player.getBoughtStyle();
+    }
+
+    public String getStyle(int style) {
+        return this.style.getStyle(style);
+    }
     public int getPlayerCoins(){
         int coins = player.getCoins();
         return coins;

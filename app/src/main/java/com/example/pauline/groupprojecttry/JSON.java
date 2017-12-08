@@ -10,6 +10,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -48,6 +50,8 @@ public class JSON {
                     player.preferedStyle = reader.nextInt();
                 } else if (name.equals("timeLevel")) {
                     player.timeLevel = reader.nextInt();
+                } else if (name.equals("boughtStyle")) {
+                    player.boughtStyle = readIntegerArray(reader);
                 } else {
                     reader.skipValue();
                 }
@@ -58,6 +62,21 @@ public class JSON {
         } catch (IOException ignored) {
         }
         return player;
+    }
+
+    private ArrayList<Integer> readIntegerArray(JsonReader reader) throws IOException {
+        List<Integer> boughtStyleValue = new ArrayList<>();
+
+        reader.beginArray();
+        while (reader.hasNext()) {
+            boughtStyleValue.add(reader.nextInt());
+        }
+        reader.endArray();
+        ArrayList<Integer> boughtStyle = new ArrayList<>();
+        for (int i = 0; i < boughtStyleValue.size(); i++) {
+            boughtStyle.add(boughtStyleValue.get(i));
+        }
+        return boughtStyle;
     }
 
     public void savePlayer(Context context, Player player) {
@@ -72,11 +91,21 @@ public class JSON {
             writer.name("successSequence").value(player.getCorrectSequence());
             writer.name("preferedStyle").value(player.getPreferedStyle());
             writer.name("timeLevel").value(player.getTimeLevel());
+            writer.name("boughtStyle");
+            writeIntegerArray(writer, player.getBoughtStyle());
             writer.endObject();
             writer.close();
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void writeIntegerArray(JsonWriter writer, ArrayList<Integer> boughtStyle) throws IOException {
+        writer.beginArray();
+        for (int value : boughtStyle) {
+            writer.value(value);
+        }
+        writer.endArray();
     }
 }
