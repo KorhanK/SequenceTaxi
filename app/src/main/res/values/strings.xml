@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Tutorial Application</string>
+    <string name="app_name">The Sequence Game</string>
     <string name="gameFlowDescription">1.Focus on the sequence of images that will arise in the central box frame and remember them.
         \n2. After the sequence of images disappear press the buttons in the lower box frame in the same sequence they appeared.
     </string>

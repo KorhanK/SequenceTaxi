@@ -4,7 +4,6 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
-
 public class Controller {
 
     private Sequence sequence;
@@ -12,12 +11,11 @@ public class Controller {
     private Style style;
     private JSON json;
 
-    /*
- constructor to initialize the instances.
- */
-
+    /**
+     * Constructor method that initializes a JSON field that will store all the fields of the Player class. Will create a Player class object, a Style class object and Sequence class object.
+     * @param context "Edmundo Note: Explain what is the context parameter!!!"
+     */
     public Controller(Context context){
-
 
         json = new JSON();
 
@@ -25,8 +23,10 @@ public class Controller {
         if (player == null) {
             player = new Player();
         }
+
         style = new Style(player.getPreferedStyle());
 
+        //Edmundo Note: Is it common to have methods in the constructor?
         createSequence();
     }
 
@@ -43,7 +43,6 @@ public class Controller {
         int lives = player.getLives();
         return lives;
     }
-
 
     public int getPlayerCoins(){
         int coins = player.getCoins();
@@ -106,7 +105,7 @@ public class Controller {
     To return the Array of sequence
      */
     public ArrayList<Integer> getSequenceOfNumber() {
-       return sequence.getSequenceOfNumbers();
+        return sequence.getSequenceOfNumbers();
     }
 
 
@@ -122,7 +121,6 @@ public class Controller {
             return false;
     }
 
-
     public void pay(int i) {
         player.setCoins(player.getCoins() - i);
     }
@@ -130,4 +128,7 @@ public class Controller {
     public void resetUserInput(){
         sequence.userInputReset();
     }
+
+
+
 }

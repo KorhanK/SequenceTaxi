@@ -1,9 +1,9 @@
 package com.example.pauline.groupprojecttry;
 
-/**
- * Created by tmp-sda-1108 on 11/30/17.
- */
 
+/**
+ * Player class that initializes the class fields, and have the following setters and getters methods for: coins, lives, level, correct sequence, total coins, prefered style, and time level. .
+ */
 public class Player {
 
     public int coins;
@@ -15,7 +15,12 @@ public class Player {
     public int preferedStyle;
     public int sequence;
 
+
+    /**
+     * Constructor method that initializes the Player class fields of coins, lives, level, timeLevel, correctSequence, preferedStyle and sequence.
+     */
     public Player() {
+
         coins=0;
         lives=5;
         level=1;
@@ -25,8 +30,9 @@ public class Player {
         preferedStyle = 0;
     }
 
-
+    //Edmundo Note: do we need this method?
     public int addSequence(boolean check) {
+
         check=false;
 
         if (check==true) {
@@ -38,12 +44,16 @@ public class Player {
 
         return sequence;
     }
+
+    //Edmundo Note: do we need this method?
     public int incresLevel() {
         if(sequence==+1) {
             level=level+1;
         }
         return level;
     }
+
+    //Edmundo Note: do we need this method?
     public int addCoins() {
 
         if (sequence==+1) {
@@ -52,6 +62,7 @@ public class Player {
         return coins;
     }
 
+    //Edmundo Note: do we need this method?
     public void subtractLives() {
         if (lives > 0) {
             lives--;
@@ -88,10 +99,13 @@ public class Player {
         level = 1;
     }
 
+
+    //Edmundo Note: Where do we set the correct sequence?
     public int getCorrectSequence() {
         return correctSequence;
     }
 
+    //Edmundo Note: Where do we set the total coins?
     public int getTotalCoins() {
         return totalCoins;
     }
@@ -109,8 +123,8 @@ public class Player {
     }
 
     /**
-     *  Increasing the level depends on the number of times the user succeeds the level.
-     *  If the player is on level 2, the level increases after the player enters 3 right sequences.
+     *  Method that sets the time of the different levels of the game.
+     *  "Edmundo Note: can we explain what the if and else statements do?
      */
     public void setTimeLevel() {
         if (level == 1) {
