@@ -77,9 +77,8 @@ TextView textView7;
         textView7= (TextView) findViewById(R.id.textView7);
 
         controller = new Controller(this);
-        controller.loadStylePlayer();
 
-        style = new Style(controller.getPositionStyle());
+        style = Style.build(controller.getPositionStyle());
 
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
@@ -159,7 +158,7 @@ TextView textView7;
         countClickButtons++;
         //Toast.makeText(getApplicationContext(), String.valueOf(countClickButtons), Toast.LENGTH_SHORT).show();
         controller.sequenceSetUserInputs(valueClick);
-        image.setBackgroundResource(style.getImages());
+        image.setBackgroundResource(style.getImage());
 
 
         if (countClickButtons == controller.getPlayerLevel() + 2) {

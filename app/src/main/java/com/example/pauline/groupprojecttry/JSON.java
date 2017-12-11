@@ -24,14 +24,12 @@ public class JSON {
         try {
             file = context.openFileInput(FILENAME);
         } catch (FileNotFoundException e) {
-            return null;
+            return new Player();
         }
 
-        Player player = null;
+        Player player = new Player();
         try {
             JsonReader reader = new JsonReader(new InputStreamReader(file, "UTF-8"));
-
-            player = new Player();
 
             reader.beginObject();
             while (reader.hasNext()) {
@@ -50,7 +48,7 @@ public class JSON {
                     player.preferedStyle = reader.nextInt();
                 } else if (name.equals("timeLevel")) {
                     player.timeLevel = reader.nextInt();
-                } else if (name.equals("boughtStyle")) {
+                } else if (name.equals("boughtStyles")) {
                     player.boughtStyle = readIntegerArray(reader);
                 } else {
                     reader.skipValue();
@@ -91,8 +89,8 @@ public class JSON {
             writer.name("successSequence").value(player.getCorrectSequence());
             writer.name("preferedStyle").value(player.getPreferedStyle());
             writer.name("timeLevel").value(player.getTimeLevel());
-            writer.name("boughtStyle");
-            writeIntegerArray(writer, player.getBoughtStyle());
+            writer.name("boughtStyles");
+            writeIntegerArray(writer, player.getBoughtStyles());
             writer.endObject();
             writer.close();
             file.close();

@@ -4,33 +4,52 @@ import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
-public class Style {
+public abstract class Style {
+    public static int DIRECTIONS_STYLE = 0;
+    public static int ANIMALS_STYLE = 1;
+    public static int NUMBERS_STYLE = 2;
 
-    private ArrayList<Integer> images;
-    private HashMap<Integer, Integer> sequenceButtons;
-    private HashMap<Integer, String> styles;
+    protected ArrayList<Integer> images;
+    protected HashMap<Integer, Integer> sequenceButtons;
     private Random randomInt = new Random();
-    //Controller controller;
+    private int id;
+    private String name;
 
-    public Style(int positionStyle) {
+    public Style() {
         sequenceButtons = new HashMap<>();
         images = new ArrayList<>();
-        styles = new HashMap<>();
-
-
-        styles.put(0, "directions");
-        styles.put(1, "animals");
-        styles.put(2, "numbers");
-
-        loadStyle(positionStyle);
     }
 
-    public int getImages() {
+    public static Style build(int styleDef) {
+        switch (styleDef) {
+            case 1:
+                return new StyleAnimals();
+            case 2:
+                return new StyleNumbers();
+            default:
+                return new StyleDirections();
+        }
+    }
+
+    public static Style build(String name) {
+        switch (name) {
+            case "animals":
+                return new StyleAnimals();
+            case "numbers":
+                return new StyleNumbers();
+            default:
+                return new StyleDirections();
+        }
+    }
+
+    public int getImage() {
         int value = randomInt.nextInt(images.size());
         return images.get(value);
     }
+
 
     public int getPlayButtons(int key) {
         if (key > 0 && key <5) {
@@ -39,71 +58,15 @@ public class Style {
         return 0;
     }
 
-    public String getStyle(int pos){
-        String style = styles.get(pos);
-        return style;
-    }
-
-    public HashMap<Integer, String> getAllStyle() {
+    public List<Style> getAllStyles() {
+        List<Style> styles = new ArrayList<>();
+        styles.add(Style.build(DIRECTIONS_STYLE));
+        styles.add(Style.build(ANIMALS_STYLE));
+        styles.add(Style.build(NUMBERS_STYLE));
         return styles;
     }
 
-    public void loadStyle(int pos) {
-        if(getStyle(pos).equals("directions")){
-            directionStyle();
-        } else if(getStyle(pos).equals("animals")){
-            animalStyle();
-        } else if(getStyle(pos).equals("numbers")) {
-            numberColorStyle();
-        } else{
-            directionStyle();
-        }
+    public abstract int getId();
 
-    }
-
-    public void directionStyle() {
-        sequenceButtons.put(1, R.drawable.left_white);
-        sequenceButtons.put(2, R.drawable.up_white);
-        sequenceButtons.put(3, R.drawable.down_white);
-        sequenceButtons.put(4, R.drawable.right_white);
-
-
-        images.add(R.drawable.stockholm_colorful);
-        images.add(R.drawable.stockholm_gamlastan);
-        images.add(R.drawable.stockholm_gamlastannight);
-        images.add(R.drawable.stockholm_globen);
-        images.add(R.drawable.stockholm_oldstreet);
-        images.add(R.drawable.stockholm_segelstorg);
-        images.add(R.drawable.stockholm_winterbridge);
-    }
-
-    public void animalStyle() {
-        sequenceButtons.put(1, R.drawable.cow_button);
-        sequenceButtons.put(2, R.drawable.horse_button);
-        sequenceButtons.put(3, R.drawable.pig_button);
-        sequenceButtons.put(4, R.drawable.sheep_button);
-
-        images.add(R.drawable.farm_calf);
-        images.add(R.drawable.farm_chicks);
-        images.add(R.drawable.farm_duckcat);
-        images.add(R.drawable.farm_lamb);
-        images.add(R.drawable.farm_piglets);
-        images.add(R.drawable.farm_poney);
-        images.add(R.drawable.farm_sheep);
-    }
-
-    public void numberColorStyle() {
-        sequenceButtons.put(1, R.drawable.one_color);
-        sequenceButtons.put(2, R.drawable.two_color);
-        sequenceButtons.put(3, R.drawable.three_color);
-        sequenceButtons.put(4, R.drawable.four_color);
-
-        images.add(R.drawable.matrix_1);
-        images.add(R.drawable.matrix_binary);
-        images.add(R.drawable.matrix_emc2);
-        images.add(R.drawable.matrix_fibonaci);
-        images.add(R.drawable.matrix_numbers);
-        images.add(R.drawable.matrix_pi);
-        images.add(R.drawable.matrix_systemfailure);
-    }
+    public abstract String getName();
 }

@@ -20,7 +20,8 @@ public class Player {
 
 
     /**
-     * Constructor method that initializes the Player class fields of coins, lives, level, timeLevel, correctSequence, preferedStyle and sequence.
+     * Constructor method that initializes the Player class fields of coins, lives, level,
+     * timeLevel, correctSequence, preferedStyle and sequence.
      */
     public Player() {
 
@@ -34,43 +35,6 @@ public class Player {
         boughtStyle = new ArrayList<>();
         boughtStyle.add(0);
     }
-    public int addSequence(boolean check) {
-
-        check=false;
-
-        if (check==true) {
-            sequence=+1;
-        }
-        else if(check==false) {
-            sequence=sequence;
-        }
-
-        return sequence;
-    }
-
-    //Edmundo Note: do we need this method?
-    public int incresLevel() {
-        if(sequence==+1) {
-            level=level+1;
-        }
-        return level;
-    }
-
-    //Edmundo Note: do we need this method?
-    public int addCoins() {
-
-        if (sequence==+1) {
-            coins=coins+5;
-        }
-        return coins;
-    }
-
-    //Edmundo Note: do we need this method?
-    public void subtractLives() {
-        if (lives > 0) {
-            lives--;
-        }
-    }
 
     public int getCoins() {
         return coins;
@@ -78,6 +42,10 @@ public class Player {
 
     public void setCoins(int coins) {
         this.coins = coins;
+    }
+
+    public void paidCoins(int paidCoins) {
+        coins = coins - paidCoins;
     }
 
     public int getLives() {
@@ -176,10 +144,12 @@ public class Player {
     }
 
     public void addBoughtStyle(int newStyle) {
-        boughtStyle.add(newStyle);
+        if (!isBoughtStyle(newStyle)) {
+            boughtStyle.add(newStyle);
+        }
     }
 
-    public boolean searchBoughtStyle(int style) {
+    public boolean isBoughtStyle(int style) {
         boolean found = false;
         for (int i = 0; i < boughtStyle.size(); i++) {
             if (boughtStyle.get(i) == style) {
@@ -189,10 +159,9 @@ public class Player {
         return found;
     }
 
-    public ArrayList<Integer> getBoughtStyle() {
+    public ArrayList<Integer> getBoughtStyles() {
         return boughtStyle;
     }
 
-}
 }
 
