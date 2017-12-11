@@ -51,7 +51,7 @@
 //        linearLayoutButtons = (LinearLayout) findViewById(R.id.buttons);
 //        images = new ArrayList<>();
 //
-//        spinner = findViewById(R.id.spinner);
+//        ownedStylesSpinner = findViewById(R.id.ownedStylesSpinner);
 //        adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, this.nbSequence);
 //        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        spinner.setAdapter(adapter);
@@ -98,7 +98,7 @@
 //    }
 //
 //    public void go() {
-//        lengthSequence = (Integer) spinner.getItemAtPosition(spinner.getSelectedItemPosition());
+//        lengthSequence = (Integer) ownedStylesSpinner.getItemAtPosition(ownedStylesSpinner.getSelectedItemPosition());
 //
 //        sequence = new Sequence(lengthSequence);
 //

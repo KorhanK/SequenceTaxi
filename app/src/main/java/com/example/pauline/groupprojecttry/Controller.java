@@ -3,7 +3,7 @@ package com.example.pauline.groupprojecttry;
 import android.content.Context;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 public class Controller {
 
@@ -21,46 +21,30 @@ public class Controller {
         json = new JSON();
 
         player = json.loadPlayer(context);
-        if (player == null) {
-            player = new Player();
-        }
 
-        style = new Style(player.getPreferedStyle());
+        style = Style.build(player.getPreferedStyle());
 
         //Edmundo Note: Is it common to have methods in the constructor?
         createSequence();
-    }
-
-    public void loadStylePlayer() {
-        style.loadStyle(player.getPreferedStyle());
     }
 
     public int getPositionStyle() {
         return player.getPreferedStyle();
     }
 
-
     public int getPlayerLives(){
         int lives = player.getLives();
         return lives;
     }
 
-
-    public HashMap<Integer, String> allStyle() {
-        return style.getAllStyle();
+    public List<Style> allStyles() {
+        return style.getAllStyles();
     }
 
-    public boolean searchBoughtStyle(int style) {
-        return player.searchBoughtStyle(style);
+    public boolean isStyleBought(int style) {
+        return player.isBoughtStyle(style);
     }
 
-    public ArrayList<Integer> getBoughtStyle() {
-        return player.getBoughtStyle();
-    }
-
-    public String getStyle(int style) {
-        return this.style.getStyle(style);
-    }
     public int getPlayerCoins(){
         int coins = player.getCoins();
         return coins;
@@ -74,10 +58,6 @@ public class Controller {
     public void createSequence() {
         sequence = new Sequence(player.getLevel());
     }
-
-    /*
-    to update the level.
-     */
 
     public void upLevel() {
         player.setCoins(player.getCoins()+5+player.getLevel()-1);
@@ -98,9 +78,6 @@ public class Controller {
         return sequence.check();
 
     }
-    /*
-    To decrease life
-     */
 
     public boolean lifeDown() {
         player.setLives(player.getLives()-1);
@@ -110,17 +87,6 @@ public class Controller {
             return false;
     }
 
-//    public Controller(int level) {
-//        sequence = new Sequence(level);
-//    }
-
-//    public void quit() {
-//        System.exit(0);
-//    }
-
-    /*
-    To return the Array of sequence
-     */
     public ArrayList<Integer> getSequenceOfNumber() {
         return sequence.getSequenceOfNumbers();
     }

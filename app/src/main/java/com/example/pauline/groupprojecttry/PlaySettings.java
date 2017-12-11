@@ -1,6 +1,5 @@
 package com.example.pauline.groupprojecttry;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,27 +7,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class PlaySettings extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class PlaySettings extends AppCompatActivity {
 
     Controller controller;
-    Spinner spinner;
-    Spinner spinner2;
+    Spinner ownedStylesSpinner;
+    Spinner availableStylesSpinner;
     Player player;
     JSON json = new JSON();
-    Button buyButton;
-    ArrayList<Integer> boughtStyle;
-    List<String> categories2 = new ArrayList<String>();
-    List<String> categories;
+    ArrayList<Integer> boughtStyles;
+    List<String> stylesOwned = new ArrayList<>();
+    List<String> stylesAvailable = new ArrayList<>();
+    int selectedStylePos = 0;
+    TextView coins;
 
     Context mContext;
 
@@ -36,10 +33,6 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_settings);
-
-        //buyButton = (Button)findViewById(R.id.buy);
-        //buyButton.setVisibility(View.INVISIBLE);
-
 
         controller = new Controller(this);
         player = json.loadPlayer(this);
@@ -50,185 +43,126 @@ public class PlaySettings extends AppCompatActivity implements AdapterView.OnIte
         lives.setText(String.valueOf(controller.getPlayerLives()));
 
         //update remaining coins of the player from json
-        TextView coins = findViewById(R.id.coins);
+        coins = findViewById(R.id.coins);
         coins.setText(String.valueOf(controller.getPlayerCoins()));
 
         /* initiate a Switch */
-        Switch simpleSwitch = (Switch) findViewById(R.id.sound);
+        //Switch simpleSwitch = (Switch) findViewById(R.id.sound);
 
         /* set the current state of a Switch */
-        simpleSwitch.setChecked(true);
+        //simpleSwitch.setChecked(true);
 
-        // Spinner element for categories
-        spinner = (Spinner) findViewById(R.id.spinner);
+        // Spinner element for styles owned
+        ownedStylesSpinner = findViewById(R.id.spinner);
 
-        //second spinner for bought styles
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
+        //second ownedStylesSpinner for bought styles
+        availableStylesSpinner = findViewById(R.id.spinner2);
 
-        // Spinner click listener
-        spinner.setOnItemSelectedListener(this);
+        addBoughtStyles();
+        prepareOwnedStylesSpinner();
+        prepareAvailableStylesSpinner();
+    }
 
-        // Spinner Drop down elements
-        categories = new ArrayList<String>();
-
-        //Manage the first spinner to add the bought style
-        boughtStyle = player.getBoughtStyle();
-        for(int i = 0; i < boughtStyle.size(); i++) {
-            if (boughtStyle.get(i) == 0) {
-                categories.add("directions");
+    private void addBoughtStyles() {
+        // Add the bought styles
+        boughtStyles = player.getBoughtStyles();
+        int preferedStyle = player.getPreferedStyle();
+        int i = 0;
+        for (Integer id : boughtStyles) {
+            Style boughtStyle = Style.build(id);
+            stylesOwned.add(boughtStyle.getName());
+            if (id == preferedStyle) {
+                selectedStylePos = i;
             }
-            if (boughtStyle.get(i) == 1) {
-                categories.add("animals");
-            }
-            if (boughtStyle.get(i) == 2) {
-                categories.add("numbers");
-            }
+            i++;
         }
+    }
 
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+    private void prepareOwnedStylesSpinner() {
+        // Creating adapter for ownedStylesSpinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stylesOwned);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter);
-
-        spinner.setSelection(player.getPreferedStyle());
-
-        //Manage the second adapter to add the style don't bought
-
-
-
-        HashMap<Integer, String> allStyle = new HashMap<>();
-        allStyle = controller.allStyle();
-
-        for (int i = 0; i < allStyle.size(); i++) {
-            if (!controller.searchBoughtStyle(i)) {
-                categories2.add(controller.getStyle(i));
-            }
-        }
-
-        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories2);
-        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(dataAdapter2);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        // attaching data adapter to ownedStylesSpinner
+        ownedStylesSpinner.setAdapter(dataAdapter);
+        ownedStylesSpinner.setSelection(selectedStylePos);
+        ownedStylesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String item = spinner.getItemAtPosition(position).toString();
-
-                int pos = 0;
-                if (item.equals("directions")) {
-                    pos = 0;
-                }
-                if (item.equals("animals")) {
-                    pos = 1;
-                }
-                if (item.equals("numbers")) {
-                    pos = 2;
-                }
-
-                player.setPreferedStyle(pos);
+                String item = ownedStylesSpinner.getItemAtPosition(position).toString();
+                Style boughtStyle = Style.build(item);
+                player.setPreferedStyle(boughtStyle.getId());
 
                 //save json
                 json.savePlayer(mContext, player);
 
-                // Showing selected spinner item
-                Toast.makeText(spinner.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-
+                // Showing selected ownedStylesSpinner item
+                Toast.makeText(ownedStylesSpinner.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
             }
-
         });
     }
 
+    private void prepareAvailableStylesSpinner() {
+        //Manage the second adapter to add the styles not bought
+        List<Style> allStyle = controller.allStyles();
+
+        for (Style style : allStyle) {
+            if (!controller.isStyleBought(style.getId())) {
+                stylesAvailable.add(style.getName());
+            }
+        }
+
+        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stylesAvailable);
+        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        availableStylesSpinner.setAdapter(dataAdapter2);
+    }
 
     public void buyStyle(View view) {
 
-        String valueSpinner = (String) spinner2.getItemAtPosition(spinner2.getSelectedItemPosition());
+        if (controller.canPay(20)) {
+                player.paidCoins(20);
+                coins.setText(String.valueOf(player.getCoins()));
 
-        if (valueSpinner.equals("animals")) {
-            //if (controller.getPlayerCoins() >= 50) {
-                boughtStyle.add(1);
-                //player.setCoins(controller.getPlayerCoins() - 50); // this amount can be changed
-            //}
+                String valueSpinner = (String) availableStylesSpinner.getItemAtPosition(availableStylesSpinner.getSelectedItemPosition());
+
+                Style boughtStyle = Style.build(valueSpinner);
+                boughtStyles.add(boughtStyle.getId());
+                player.addBoughtStyle(boughtStyle.getId());
+
+                stylesOwned.clear();
+                stylesAvailable.clear();
+                json.savePlayer(this, player);
+                controller = new Controller(this);
+                player = json.loadPlayer(this);
+
+                addBoughtStyles();
+
+                List<Style> allStyle = controller.allStyles();
+
+                for (Style style : allStyle) {
+                    if (!controller.isStyleBought(style.getId())) {
+                        stylesAvailable.add(style.getName());
+                    }
+                }
+
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stylesOwned);
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ownedStylesSpinner.setAdapter(dataAdapter);
+
+                ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, stylesAvailable);
+                dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                availableStylesSpinner.setAdapter(dataAdapter2);
+        } else {
+            Toast.makeText(ownedStylesSpinner.getContext(), "You can't buy! You need more money!", Toast.LENGTH_LONG).show();
         }
-        if(valueSpinner.equals("numbers")) {
-            //if(controller.getPlayerCoins() >= 50) {
-                boughtStyle.add(2);
-                //player.setCoins(controller.getPlayerCoins() - 50);
-            //}
-        }
-
-        //////////////
-        categories.clear();
-        categories2.clear();
-        json.savePlayer(this, player);
-        controller = new Controller(this);
-        player = json.loadPlayer(this);
-        boughtStyle = player.getBoughtStyle();
-        for(int i = 0; i < boughtStyle.size(); i++) {
-            if (boughtStyle.get(i) == 0) {
-                categories.add("directions");
-            }
-            if (boughtStyle.get(i) == 1) {
-                categories.add("animals");
-            }
-            if (boughtStyle.get(i) == 2) {
-                categories.add("numbers");
-            }
-        }
-
-        HashMap<Integer, String> allStyle = new HashMap<>();
-        allStyle = controller.allStyle();
-
-        for (int i = 0; i < allStyle.size(); i++) {
-            if (!controller.searchBoughtStyle(i)) {
-                categories2.add(controller.getStyle(i));
-            }
-        }
-        //////////////
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);
-
-        ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories2);
-        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(dataAdapter2);
-
-
     }
 
-
-
-
-        @Override
-        public void onItemSelected(final AdapterView<?> adapterView, View view, int i, long l) {
-
-
-
-
-
-        // On selecting a spinner item
-
-
-        //Cut and paste the following code to the class where you control the spinner
-        // Bundle bundle=getIntent().getExtras();
-        //String data=bundle.get("data").toString();
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
-
-    public void exit() {
-        Intent intent =  new Intent(PlaySettings.this, StartPageActivity.class); // Change the mainActivity to the game page
-        //intent.putExtra("data", String.valueOf(spinner.getSelectedItem()));
+    public void exit(View view) {
+        Intent intent = new Intent(this, StartPageActivity.class);
         startActivity(intent);
     }
 }
