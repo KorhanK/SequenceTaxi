@@ -87,7 +87,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Styles that you have:"
-        android:textSize="15dp"/>
+        android:textColor="@android:color/background_light"
+        android:textSize="15dp" />
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="fill_parent"
@@ -102,7 +103,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Styles that you can buy:"
-        android:textSize="15dp"/>
+        android:textColor="@android:color/background_light"
+        android:textSize="15dp" />
 
     <Spinner
         android:id="@+id/spinner2"
@@ -128,17 +130,17 @@
         android:layout_height="fill_parent">
 
         <!-- Exits the the game -->
-        <Button
-            android:id="@+id/exit"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/back"
-            android:layout_toRightOf="@+id/view"
-            android:background="@drawable/exit_button"
-            android:onClick="exit"
-            />
+        <!--<Button-->
+            <!--android:id="@+id/exit"-->
+            <!--android:layout_width="120dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_alignTop="@+id/back"-->
+            <!--android:layout_toRightOf="@+id/view"-->
+            <!--android:background="@drawable/exit_button"-->
+            <!--android:onClick="resetPlayer"-->
+            <!--/>-->
 
         <View
             android:id="@+id/view"
@@ -154,7 +156,9 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/view"
-            android:background="@drawable/back_button" />
+            android:background="@drawable/back_button"
+            android:onClick="exit"
+            />
 
     </RelativeLayout>
 

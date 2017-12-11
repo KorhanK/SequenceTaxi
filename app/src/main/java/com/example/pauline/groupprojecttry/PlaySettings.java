@@ -157,12 +157,16 @@ public class PlaySettings extends AppCompatActivity {
                 dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 availableStylesSpinner.setAdapter(dataAdapter2);
         } else {
-            Toast.makeText(ownedStylesSpinner.getContext(), "You can't buy! You need more money!", Toast.LENGTH_LONG).show();
+            Toast.makeText(ownedStylesSpinner.getContext(), "You need 20 coins for that!", Toast.LENGTH_LONG).show();
         }
     }
 
     public void exit(View view) {
         Intent intent = new Intent(this, StartPageActivity.class);
         startActivity(intent);
+    }
+
+    public void resetPlayer(View view){
+        controller.resetPlayerFull();
     }
 }

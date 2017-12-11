@@ -25,7 +25,7 @@ public class Player {
      */
     public Player() {
 
-        coins=0;
+        coins=100;
         lives=5;
         level=1;
         timeLevel = 1;

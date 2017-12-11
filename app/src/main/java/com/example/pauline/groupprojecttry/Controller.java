@@ -112,6 +112,8 @@ public class Controller {
         sequence.userInputReset();
     }
 
-
+    public void resetPlayerFull() {
+       player = new Player();
+    }
 
 }
