@@ -1,9 +1,5 @@
 package com.example.pauline.groupprojecttry;
 
-/**
- * Created by pauline on 10/12/2017.
- */
-
 public class StyleAnimals extends Style {
     public StyleAnimals() {
         sequenceButtons.put(1, R.drawable.cow_button);

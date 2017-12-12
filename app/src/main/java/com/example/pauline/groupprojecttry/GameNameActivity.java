@@ -13,9 +13,7 @@ import android.widget.TextView;
         private int progressStatus = 25;
         private TextView textView;
         private Handler handler = new Handler();
-        /*
-        constructor to initialize the instances.
-         */
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -24,12 +22,12 @@ import android.widget.TextView;
 
             progressBar = (ProgressBar) findViewById(R.id.progressBar);
             textView = (TextView) findViewById(R.id.textView);
-        // Start long running operation in a background thread
+            // Start long running operation in a background thread
             new Thread(new Runnable() {
                 public void run() {
                     while (progressStatus < 100) {
                         progressStatus += 1;
-                  // Update the progress bar and display
+                        // Update the progress bar and display
 
                         handler.post(new Runnable() {
                             public void run() {
@@ -39,7 +37,7 @@ import android.widget.TextView;
 
                         });
                         try {
-                       // Sleep for 200 milliseconds.
+                        // Sleep for 200 milliseconds.
 
                             Thread.sleep(50);
 

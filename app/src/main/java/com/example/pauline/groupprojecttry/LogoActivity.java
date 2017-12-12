@@ -15,7 +15,6 @@ public class LogoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logo);
         image=findViewById(R.id.imagelogo);
-//final View myLayout = findViewById(R.id.startscreen);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

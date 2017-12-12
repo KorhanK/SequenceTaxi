@@ -13,7 +13,8 @@ public class Controller {
     private JSON json;
 
     /**
-     * Constructor method that initializes a JSON field that will store all the fields of the Player class. Will create a Player class object, a Style class object and Sequence class object.
+     * Constructor method that initializes a JSON field that will store all the fields of the Player
+     * class. Will create a Player class object, a Style class object and Sequence class object.
      * @param context "Edmundo Note: Explain what is the context parameter!!!"
      */
     public Controller(Context context){
@@ -24,7 +25,6 @@ public class Controller {
 
         style = Style.build(player.getPreferedStyle());
 
-        //Edmundo Note: Is it common to have methods in the constructor?
         createSequence();
     }
 

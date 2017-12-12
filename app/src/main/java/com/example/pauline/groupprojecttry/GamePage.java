@@ -22,8 +22,6 @@ public class GamePage extends AppCompatActivity {
     Controller controller;
 
 TextView textView7;
-    //JSON json = new JSON();
-    Player player;
 
     ImageView image1;
     ImageView image2;
@@ -116,7 +114,6 @@ TextView textView7;
 
     public void imageSetter(ArrayList<Integer> sequence){
         int total = sequence.size();
-        //total += 2;
         for (int i = 0; i < total; i++) {
             if (sequence.get(i) == 1)
                 images.get(i).setBackgroundResource(style.getPlayButtons(1));
@@ -156,7 +153,6 @@ TextView textView7;
 
     public void onClickButton(final int valueClick) {
         countClickButtons++;
-        //Toast.makeText(getApplicationContext(), String.valueOf(countClickButtons), Toast.LENGTH_SHORT).show();
         controller.sequenceSetUserInputs(valueClick);
         image.setBackgroundResource(style.getImage());
 
@@ -207,12 +203,6 @@ TextView textView7;
         }
     }
 
-//    public void upLevel() {
-//        player.setLevel(level + 1);
-//        json.savePlayer(this, player);
-//        //Toast.makeText(getApplicationContext(), String.valueOf(player.getLevel()), Toast.LENGTH_SHORT).show();
-//    }
-
     public void startSequence() {
         linearLayoutButtons.setVisibility(View.VISIBLE);
         TextView lives = findViewById(R.id.lives);
@@ -233,11 +223,7 @@ TextView textView7;
         images.add(image7);
         images.add(image8);
 
-
-
         runThis();
-
-
     }
 
     public void runThis(){
@@ -344,10 +330,5 @@ TextView textView7;
         }
         else
             Toast.makeText(getApplicationContext(), "You don't have 20 coins!", Toast.LENGTH_SHORT).show();
-
-
-
     }
-
-
 }
