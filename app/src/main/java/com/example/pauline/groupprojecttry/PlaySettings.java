@@ -123,7 +123,9 @@ public class PlaySettings extends AppCompatActivity {
 
     public void buyStyle(View view) {
 
-        if (controller.canPay(20)) {
+        if (availableStylesSpinner.getSelectedItem() == null) {
+            Toast.makeText(ownedStylesSpinner.getContext(), "No more style to buy!", Toast.LENGTH_LONG).show();
+        } else if (controller.canPay(20)) {
                 player.paidCoins(20);
                 coins.setText(String.valueOf(player.getCoins()));
 
@@ -159,6 +161,7 @@ public class PlaySettings extends AppCompatActivity {
         } else {
             Toast.makeText(ownedStylesSpinner.getContext(), "You need 20 coins for that!", Toast.LENGTH_LONG).show();
         }
+
     }
 
     public void exit(View view) {

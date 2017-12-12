@@ -4,7 +4,8 @@ package com.example.pauline.groupprojecttry;
 import java.util.ArrayList;
 
 /**
- * Player class that initializes the class fields, and have the following setters and getters methods for: coins, lives, level, correct sequence, total coins, prefered style, and time level. .
+ * Player class that initializes the class fields, and have the following setters and getters
+ * methods for: coins, lives, level, correct sequence, total coins, prefered style, and time level.
  */
 public class Player {
 
@@ -15,7 +16,6 @@ public class Player {
     public int correctSequence;
     public int totalCoins;
     public int preferedStyle;
-    public int sequence;
     public ArrayList<Integer> boughtStyle;
 
 
@@ -71,12 +71,10 @@ public class Player {
     }
 
 
-    //Edmundo Note: Where do we set the correct sequence?
     public int getCorrectSequence() {
         return correctSequence;
     }
 
-    //Edmundo Note: Where do we set the total coins?
     public int getTotalCoins() {
         return totalCoins;
     }
